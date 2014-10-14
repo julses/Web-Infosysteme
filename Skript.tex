@@ -1,0 +1,62 @@
+\input{content/header}
+\input{content/0-Glossar}
+
+\begin{document}
+
+%%%%% Titelseite
+\include{content/0-Titelseite}
+\pagenumbering{Roman}
+\onehalfspacing
+% ==============================================
+
+%%%%% Inhaltsverzeichnis
+\tableofcontents
+\newpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+% ==============================================
+\setcounter{page}{5}
+
+%%%%% Hauptteil
+\acresetall
+% ==============================================
+\include{content/01-XML}
+\newpage
+% ==============================================
+\include{content/02-XSL}
+\newpage
+% ==============================================
+\include{content/03-XSLT}
+\newpage
+% ==============================================
+\include{content/04-XPath}
+\newpage
+% ==============================================
+
+%\pagenumbering{Roman}
+%\setcounter{page}{5}
+
+%%%%% Glossar
+\printglossary[title=Glossar,toctitle=Glossar]
+\thispagestyle{plain}
+\clearpage
+% ==============================================
+
+%%%%% Abbildungsverzeichnis
+\listoffigures
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Abbildungsverzeichnis}} % Nicht nummerierter TOC Eintrag
+\newpage
+% ==============================================
+
+%%%%% Tabellenverzeichnis
+\listoftables
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Tabellenverzeichnis}} % Nicht nummerierter TOC Eintrag
+\newpage
+% ==============================================
+
+%%%%% Listings
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{\protect\numberline{}{Listings}} % Nicht nummerierter TOC Eintrag
+% ==============================================
+
+\end{document}

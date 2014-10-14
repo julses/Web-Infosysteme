@@ -1,0 +1,22 @@
+\chapter{XSL}
+
+\section{Bestandteile}
+Die XML Stylesheet Language besteht aus:
+\begin{itemize}
+\item XSLT: XSL Transformation, Sprache zur Transformation von „XML-Konstrukten“ in andere XML-Konstrukte (oder auch „Konstrukte“ in textbasierten Sprachen)
+\item XPath: XML Path Language, Sprache zur Auswahl von spezifischen „XML-Konstrukten“ aus der XML-Quelldatei
+\item XML-FO: XML-Formatting Objects, spezielle XML-basierte Sprache zur layoutgetreuen Ausgabe (nicht struktur- sondern designorientierte Sprache)
+\item im Folgenden für uns in der Vorlesung interessant: XSLT, XPath nicht jedoch XML-FO
+\end{itemize}
+\hspace*{0,5mm}\\
+
+Bsp. für Anwendung: XSLT zur Wandlung der abstrakten „Studis-Datei“ in eine HTML-Datei mit entsprechender Tabelle der Studis\\
+\\
+Wer führt die Transformation durch?
+\begin{itemize}
+\item \emph{standalone-Tool:} XSLprocessor (in gängigen Linux-Distributionen enthalten) Apache xalan saxon (von Michael Kay) (unterstützt auch XSLT Version 2)
+\item \emph{serverseitig:} Integration der XSLT in einem WebServer, d.h. der WebServer liefert			bei Anforderung der XML-Datei bereits die mittels XSLT transformierte Datei aus!
+Apache Project Cocoon
+Perl-Modul AxKit
+\item \emph{clientseitig:} integriert in gängige WebBrowser -$>$ Mozilla Firefox, MS Internet Explorer, Opera, Chrome, Safari können XSLT!
+\end{itemize}

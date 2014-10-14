@@ -1,0 +1,38 @@
+\chapter{XSLT}
+
+\section{Transfomation}
+Werkzeug zur Transformation von XML-basierten Daten in (meist andere) XML-basierte Daten.
+\begin{lstlisting}[caption={Definition einer XML-Datei zur Transformation}, label={lst:inline-dtd}, language={XML}]
+	<?xml version="1.0" ?> <!--Hinweis: Attribut encoding="UTF-8" ist bei XML default-->
+	<!DOCTYPE studis SYSTEM "url/zur DTD"> //<?+<! sind Deklarationen wobei <! auf > endet.
+	[KEINE DOCTYPE-Deklaration!]
+	<xsl:stylesheet	
+	  version="1.0" //version->Namensraumdeklaration fuer XSLT, Praefix->Postfix
+	  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	  xmlns="Namespace der Ausgabesprache, z.B. HTML" //Namensraumdeklaration fuer Ausgabesprache, Verwendung ohne Postfix und Praefix (Grund: Ersparung von Schreibarbeit)
+	>
+		<xsl:output method="xml" encoding ="UTF-8" //method->auch html( bitte nicht angeben!) oder text
+		doctype-public"..." //Public Doctypes (Doctype definiert den HTML-Standart)
+		doctype-system"url/zur/DTD" //fuer system Doctype deklaration 
+		<!--Template fuer die Definition der Transformation-->
+	</xsl:stylesheet>
+\end{lstlisting}
+
+\newpage
+\begin{lstlisting}[caption={Transformierte XML-Datei}, label={lst:generierte-xml}, language={XML}]
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE studis SYSTEM "url/zur/DTD">
+\end{lstlisting}
+
+
+Transfoframtionsvorschriften in Form von Templates (Schablonen)
+\begin{itemize}
+\item Templates werden nacheinander notiert, d.h. sie können nicht geschachtelt werden.
+\item Templates ersetzen irgendwelche Knoten (Tags und Attribute) aus der Quelldatei.
+\end{itemize}
+
+\begin{lstlisting}[caption={Syntax einer xsl:template-Deklaration}, label={lst:xsl-template}, language={XML}]
+<xsl:template match="XPath-Ausdruck">
+	<!--(wohlgeformte) Ausgabe des des Templates, also Text, Tags(inklusive Attribute) und 	weitere Verarbeitungsanweisungen-->
+</xsl:template>
+\end{lstlisting}

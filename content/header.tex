@@ -1,0 +1,351 @@
+\documentclass[
+   %draft,     % Entwurfsstadium
+   final,      % fertiges Dokument
+%%%% --- Schriftgröße ---
+   10.5pt,
+   %smallheadings,    % kleine Überschriften
+   %normalheadings,   % normale Überschriften
+   %bigheadings,       % große Überschriften
+   headings=big,
+%%%% --- Sprache ---
+   ngerman,           % wird an andere Pakete weitergereicht
+%%%% === Seitengröße ===
+   % letterpaper,
+   % legalpaper,
+   % executivepaper,
+   a4paper,
+   % a5paper,
+   % landscap,
+%%%% === Optionen für den Satzspiegel ===
+   BCOR5mm,          % Zusaetzlicher Rand auf der Innenseite
+   DIV11,            % Seitengroesse (siehe Koma Skript Dokumentation !)
+   %DIVcalc,         % automatische Berechnung einer guten Zeilenlaenge
+   1.1headlines,     % Zeilenanzahl der Kopfzeilen
+   headinclude=false,% Kopf einbeziehen / nicht einbeziehen
+   footinclude=false,% Fuss einbeziehen / nicht einbeziehen
+   mpinclude=false,  % Margin einbeziehen / nicht einbeziehen
+   pagesize,         % Schreibt die Papiergroesse in die Datei.
+                     % Wichtig fuer Konvertierungen
+%%%% === Layout ===
+   oneside,         % einseitiges Layout
+   %twoside,          % Seitenraender für zweiseitiges Layout
+   %onecolumn,        % Einspaltig
+   %twocolumn,       % Zweispaltig
+   %openany,         % Kapitel beginnen auf jeder Seite
+   %openright,        % Kapitel beginnen immer auf der rechten Seite
+                     % (macht nur bei 'twoside' Sinn)
+   %cleardoubleplain,    % leere, linke Seite mit Seitenstil 'plain'
+   %cleardoubleempty,    % leere, linke Seite mit Seitenstil 'empty'
+   titlepage,        % Titel als einzelne Seite ('titlepage' Umgebung)
+   %notitlepage,     % Titel in Seite integriert
+%%%% --- Absatzeinzug ---
+   %                 % Absatzabstand: Einzeilig,
+   %parskip,         % Freiraum in letzter Zeile: 1em
+   %parskip*,        % Freiraum in letzter Zeile: Viertel einer Zeile
+   %parskip+,        % Freiraum in letzter Zeile: Drittel einer Zeile
+   %parskip-,        % Freiraum in letzter Zeile: keine Vorkehrungen
+   %                 % Absatzabstand: Halbzeilig
+   %halfparskip,     % Freiraum in letzter Zeile: 1em
+   %halfparskip*,    % Freiraum in letzter Zeile: Viertel einer Zeile
+   %halfparskip+,    % Freiraum in letzter Zeile: Drittel einer Zeile
+   %halfparskip,     % Freiraum in letzter Zeile: keine Vorkehrungen
+   %                 % Absatzabstand: keiner
+   %parindent,        % Eingerückt (Standard)
+   parskip=true,
+%%%% --- Kolumnentitel ---
+	 abstracton,			 % Überschrift über den Abstract
+   headsepline,      % Linie unter Kolumnentitel
+   %headnosepline,   % keine Linie unter Kolumnentitel
+   %footsepline,     % Linie unter Fussnote
+   %footnosepline,   % keine Linie unter Fussnote
+%%%% --- Kapitel ---
+   chapterprefix,   % Ausgabe von 'Kapitel:'
+   %nochapterprefix,  % keine Ausgabe von 'Kapitel:'
+%%%% === Verzeichnisse (TOC, LOF, LOT, BIB) ===
+   %listof=totoc,      % Tabellen & Abbildungsverzeichnis ins TOC
+   %index=totoc,        % Index ins TOC
+   %bibliography=totoc,         % Bibliographie ins TOC
+   %bibtotocnumbered, % Bibliographie im TOC nummeriert
+   %liststotocnumbered, % Alle Verzeichnisse im TOC nummeriert
+   toc=graduated,        % eingereuckte Gliederung
+   %tocleft,         % Tabellenartige TOC
+   %listof=graduated,      % eingereuckte LOT, LOF
+   %listsleft,       % Tabellenartige LOT, LOF
+   %pointednumbers,  % Überschriftnummerierung mit Punkt, siehe DUDEN !
+   numbers=noenddot, % Überschriftnummerierung ohne Punkt, siehe DUDEN !
+   %openbib,         % alternative Formatierung des Literaturverzeichnisses
+%%%% === Matheformeln ===
+   %leqno,           % Formelnummern links
+   fleqn,            % Formeln werden linksbuendig angezeigt
+]{scrreprt}
+\setlength{\parindent}{0cm} % Absätze nicht einrücken
+\setlength{\parskip}{0.65em}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+%%% Links ===================================================
+\usepackage[
+	% Farben fuer die Links
+	colorlinks=true,         % Links erhalten Farben statt Kaeten
+	urlcolor=pdfurlcolor,    % \href{...}{...} external (URL)
+	filecolor=pdffilecolor,  % \href{...} local file
+	linkcolor=pdflinkcolor,  %\ref{...} and \pageref{...}
+	citecolor=pdfcitecolor,
+	% Links
+	raiselinks=true,		% calculate real height of the link
+	breaklinks,				% Links berstehen Zeilenumbruch
+	%backref=page,			% Backlinks im Literaturverzeichnis (section, slide, page, none)
+	%pagebackref=true,		% Backlinks im Literaturverzeichnis mit Seitenangabe
+	verbose,
+	hyperindex=true,		% backlinkex index
+	linktocpage=true,		% Inhaltsverzeichnis verlinkt Seiten
+	hyperfootnotes=false,	% Keine Links auf Fussnoten
+	% Bookmarks
+	bookmarks=true,			% Erzeugung von Bookmarks fuer PDF-Viewer
+	bookmarksopenlevel=1,	% Gliederungstiefe der Bookmarks
+	bookmarksopen=true,		% Expandierte Untermenues in Bookmarks
+	bookmarksnumbered=true,	% Nummerierung der Bookmarks
+	bookmarkstype=toc,		% Art der Verzeichnisses
+	% Anchors
+	plainpages=false,		% Anchors even on plain pages ?
+	pageanchor=true,		% Pages are linkable
+	pdfstartview=Fit,		% Dokument wird Fit Width geaefnet
+	pdfpagemode=UseOutlines,	% Bookmarks im Viewer anzeigen
+	pdfpagelabels=true,		% set PDF page labels
+	pdfpagelayout=SinglePage
+]{hyperref}
+% ===========================================================
+
+% Laden diverser Pakete======================================
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{tocbasic}
+\usepackage{titlesec}
+\usepackage{lastpage} 
+%\setlength{\textwidth}{14.75cm}
+\setlength{\headsep}{1cm}
+%\usepackage[top=2.5cm, bottom=4.5cm, headsep=1cm]{geometry}
+% ===========================================================
+
+
+
+%%% Verweise =============================================================
+%
+%%% Doc: Documentation inside dtx File
+\usepackage[ngerman]{varioref} % Intelligente Querverweise
+
+%-- Einstellungen für VarioRef --
+\renewcommand*{\reftextfaceafter}{[siehe \reftextvario{nachfolgende}{kommende}{folgende}{nächste} Seite]} % Verweis auf die nächste Seite
+\renewcommand*{\reftextfacebefore}{[siehe \reftextvario{vorherige}{vorhergehende} Seite]} % Verweis auf die vorherige Seite
+\renewcommand*{\reftextafter}{\reftextfaceafter}
+\renewcommand*{\reftextbefore}{\reftextfacebefore}
+\renewcommand*{\reftextcurrent}{[siehe \reftextvario{diese}{aktuelle} Seite]} % Verweis auf derselben Seite
+\renewcommand*{\reftextfaraway}[1]{[\reftextvario{siehe auch}{siehe} \reftextvario{Kap.}{Kapitel} \ref{#1} auf \reftextvario{Seite}{S.} \pageref{#1}]} % Verweis auf nicht angrenzende Seite
+%\renewcommand*{\vref}[1]{\vpageref{#1}} % Alle Refs nur noch Pageref !!! ansonsten steht Kapitelnummer direkt vor dem eigentlichen VarioRef-Text!!!
+\renewcommand*{\vrefrange}[2]{\vpagerefrange{#1}{#2}} % RefRange auf PageRefRange umbiegen, selbes Problem wie vref und vpageref
+\newcommand{\vpicref}[1]{Abb. \ref{#1} \vref{#1}}
+% ===========================================================
+
+
+% Glossar ===================================================
+\usepackage[
+	toc, 		% Das Glossar ins TOC eintragen
+	numberline,	% Fügt ein numberline im TOC Eintrag hinzu (Name wird bündig zu anderen section-Namen angezeigt und nich bündig zur Kapitelzahl)
+	nonumberlist, % Zeigt keine Seitenzahlen an, auf denen die Begriffe vorkommen
+	section=chapter, % Eintrag im TOC sitzt auf section-Ebene
+	style=altlist, % Dartstellung als Liste, Beschreibung beginnt in nächster Zeile
+	hyperfirst=true % Erstes Auftreten ist Hyperlink
+]{glossaries}
+\usepackage[
+	footnote,	% Full names appear in the footnote
+%	smaller,	% Print acronym in smaller fontsize
+	printonlyused % Nur benutze Akronyme ins Verzeichnis aufnehmen
+]{acronym}
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1cm}% Horizontale Einheit
+\setlength{\TPVertModule}{1cm}	% Vertikale Einheit
+\makeglossaries
+% ===========================================================
+
+
+
+\setcounter{secnumdepth}{2}		% Abbildungsnummerierung mit groesserer Tiefe
+\setcounter{tocdepth}{2}		% Inhaltsverzeichnis mit groesserer Tiefe
+
+
+
+% Hauptpfade  ===============================================
+\graphicspath{{Bilder/}}
+\makeatletter
+\def\input@path{{content/}}
+\makeatother
+% ===========================================================
+
+
+% Kapitel + Nummer + Trennlinie + Name + Trennlinie  ========
+\titleformat{\chapter}[display]	% {command}[shape]
+  {\usekomafont{chapter}\huge \color{black}}	% format
+  {												% label
+  \LARGE\MakeUppercase{\chaptertitlename} \Huge \thechapter \filright%
+  }%}
+  {1pt}										% sep (from chapternumber)
+  {\titlerule \vspace{0.9pc} \filright \color{chaptercolor}}    
+  %{before}[after] (before chaptertitle and after)
+  [\color{black} \vspace{0.9pc} \filright{\titlerule}]
+
+\titleformat*{\section}{\color{sectioncolor}\Large\sffamily}
+\titleformat*{\subsection}{\color{sectioncolor}\Large\sffamily}
+\titleformat*{\subsubsection}{\color{sectioncolor}\large\sffamily}
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+\usepackage{caption}
+% Aussehen der Captions
+\captionsetup{
+   margin = 10pt,
+   font = {small,rm},
+   labelfont = {small,bf},
+   format = plain, % oder 'hang'
+   indention = 0em,  % Einruecken der Beschriftung
+   labelsep = colon, %period, space, quad, newline
+   justification = RaggedRight, % justified, centering
+   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
+   position = bottom %top
+}
+% ===========================================================
+
+
+% Farben ====================================================
+% Farbe der Ueberschriften
+\definecolor{subsectioncolor}{RGB}{72, 118, 255} % Blau
+\definecolor{chaptercolor}{RGB}{0, 0, 130} % Blau (dunkler))
+\definecolor{sectioncolor}{RGB}{0, 0, 0}    % Schwarz
+%
+% Farbe des Textes
+\definecolor{textcolor}{RGB}{0, 0, 0}    % Schwarz
+%
+% Farbe fuer grau hinterlegte Boxen (fuer Paket framed.sty)
+\definecolor{shadecolor}{gray}{0.90}
+
+% Farben fuer die Links im PDF
+\definecolor{pdfurlcolor}{rgb}{0.6,0,0} % light red
+\definecolor{pdffilecolor}{rgb}{0,0.6,0} % bright green
+\definecolor{pdflinkcolor}{rgb}{0,0,0.75} % blue
+\definecolor{pdfcitecolor}{rgb}{0,0,0} % black
+
+% Farben fuer Listings
+\colorlet{stringcolor}{green!40!black!100}
+\colorlet{commencolor}{blue!0!black!100}
+\definecolor{emphcolor}{rgb}{0,0,0.75}
+\definecolor{lightgray}{rgb}{.9, .9, .9}
+\definecolor{black}{RGB}{0, 0, 0}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+% ===========================================================
+
+
+% Codelisting ===============================================
+\usepackage{listings}
+\lstset{
+  numbers=left,               % Ort der Zeilennummern
+  numberstyle=\tiny,          % Stil der Zeilennummern
+  stepnumber=2,               % Abstand zwischen den Zeilennummern
+  numbersep=-5pt,             % Abstand der Nummern zum Text
+  tabsize=2,                  % Groesse von Tabs
+  extendedchars=true,         %
+  breaklines=true,            % Zeilen werden Umgebrochen
+  stringstyle=\color{stringcolor}, % Farbe der String
+	keywordstyle=\bfseries\color{violet},
+	commentstyle=\itshape\color{darkgray},
+	emphstyle=\color{red},
+	basicstyle=\small\ttfamily\color{black}\singlespacing, % Standardschrift
+  showspaces=false,			% Leerzeichen anzeigen ?
+  showtabs=false,			% Tabs anzeigen ?
+  showstringspaces=false,	% Leerzeichen in Strings anzeigen ?
+  frame=tlrb,				% Rahmen um das Listing (Großbuchstaben = doppelt)
+  captionpos=b,						% Position der Caption (t|b)
+	belowcaptionskip=\medskipamount,	%Platz unter der Caption
+	aboveskip=\medskipamount,		% Platz über dem Listing
+	backgroundcolor=\color{lightgray}, % Hintergrundfarbe der Box
+	numberbychapter=true,			% Nummerierung der Listings nach den Kapiteln
+	rulesepcolor=\color{white},		% Farbe des Hintergrunds zwischen innerem und äußerem Rahmen
+	rulesep=0pt,						% Abstand der Rahmen voneinander
+	%framexleftmargin=2mm,			% Box nach links erweitern
+	firstnumber=1,					% Beginne mit 1 als Zeilennummer
+	escapechar=\#
+ }
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Franca}{
+  keywords={package, typeCollection, interface, attribute, is, method, version},
+  ndkeywords={enumeration, typedef, struct, array, in, out, String, Float, Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64, major, minor},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{<**}{**>},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{C++}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  ndkeywords={class, export, boolean, throw, implements, import, this, auto, int},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{XML}{
+  keywords={<?xml, <studi, <studis>, ?>, />, >, </studis>},
+  ndkeywords={version, xmlns:xsl, xml, xsl:stylesheet},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]',
+  morestring=[b]"
+}
+ 
+\lstloadlanguages{XML, HTML, C++, JavaScript}
+% ===========================================================
+
+%
+\usepackage{fancyhdr}
+%Einstelllungen Kopfzeile
+\fancyhead[L]{}
+%\renewcommand{\headrulewidth}{0.0pt} %obere Trennlinie entfernt
+
+\setlength{\intextsep}{1.5\baselineskip} % Platz ober- und unterhalb des Bildes
+
+%Einstellungen Fußzeile
+\fancyfoot[L]{\textsf{Jan Ulses}}
+\fancyfoot[C]{}
+\fancyfoot[R]{\textsf{Seite {\thepage} von \pageref{LastPage}}}
+
+\title{Test und Validierung von generiertem Middleware Sourcecode}
+\author{Jan Ulses}
+\date{15. September 2014}
+
+\setkomafont{captionlabel}{\sffamily}
+
+% Hurenkinder und Schusterjungen verhindern
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+%%%%%
+
+\usepackage[german=quotes]{csquotes}

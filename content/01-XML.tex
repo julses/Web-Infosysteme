@@ -1,0 +1,171 @@
+\chapter{XML}
+
+\begin{itemize}
+\item eXtensible Markup Language
+\item Mittel um konkrete Auszeichnungssprachen zu definieren
+\item XML selbst ist eine Metasprache, keine eigene (konkrete) Sprache
+\end{itemize}
+\paragraph{Auszeichnungssprache:}Sprache um reinen Text weitere Eigenschaften mitzugeben
+\paragraph{Designorientiert:}Textbestandteile bekommen Aussehen (z.B. Fettdruck, rote Farbe). Beispiel: klassisches Word 1990, Druckformate (PostScript, PCL)
+\paragraph{Strukturorientiert:} Struktur oder spezielle Funktion (z.B. Überschrift, Absatz, Liste, Tabelle). Beispiel: HTML, LaTeX, SGML, die meisten XML-basierten
+
+
+\section{Beispiele für XML-basierte Sprachen}
+\begin{itemize}
+\item XHTML (auch HTML5 in XML-Variante)
+\item SVG (Grafikformat)
+\item XSD (Sprache zur Definition XML-basierter Sprachen)
+\item Viele Konfigurationsdateien vieler Software-Pakete (z.B. Apache)
+\item Dokumentformate (aktuellere) von Microsoft Office (.docx) oder Open Office
+\item Austauschformate für Inhalte von relationalen Datenbanken
+\end{itemize}
+
+
+\section{DOCTYPE-Deklaration}
+\begin{lstlisting}[caption={Syntax einer DOCTYPE-Deklaration}, label={lst:doctype-declaration}, language={XML}]
+  <!DOCTYPE html(root Tag) | PUBLIC(bzw. SYSTEM, PRIVATE) "Public-Id"(bei PUBLIC) "Syst-Id"(nicht bei PRIVATE)>
+\end{lstlisting}
+Public-ID: ungefähr wie bei HTML “--//W3C/DTD/XHTML1.1/EN“\\
+System-ID: URL, verweist auf konkrete Grammatik in Form einer DTD\\
+
+\section{Wesentliche Eigenschaften von XML-Dateien}
+Es gibt zwei wesentliche Eigenschaften, welche jedes XML-basierte Dokument erfüllen muss bzw. sollte.
+\begin{itemize}
+\item Wohlgeformtheit (z.B. XML-Deklaration)
+  \begin{itemize}
+  \item Wurzel-Tag, welcher das komplette Dokument umschließt
+  \item Tags paarweise, also Start- und Endtag
+  \item Korrekte Schachtelung (letzter geöffneter Tag zuerst schließen)
+  \end{itemize}
+\item Gültigkeit (z.B. DOCTYPE-Deklaration, insbesondere Verweis auf DTD)
+  \begin{itemize}
+  \item Entspricht einer konkreten Grammatik (Tagnamen, Attributnamen und Zugehörigkeit, Enthaltenseinsmodell  (Inhalt eines Tags)
+  \end{itemize}
+\end{itemize}
+
+
+\section{Document Type Definition}
+Document Type Definitionen (kurz: DTD)
+\begin{itemize}
+\item Definiert eine konkrete Grammatik (XML-basiert)
+\item Besteht aus Text
+\item Besteht nur aus Deklarationen (wegen fehlendem Wurzeltag nicht XML-basiert)
+\end{itemize}
+
+\newpage
+\section{ELEMENT-Deklaration}
+\begin{lstlisting}[caption={Syntax einer ELEMENT-Deklaration}, label={lst:doctype-declaration}, language={XML}]
+  <!ELEMENT tagname inhaltsmodell>
+\end{lstlisting}
+\paragraph{tagname:}Name des Elements/Tags bestehend aus Buchstaben (Klein- und Großschreibung wird unterschieden, <bla> ist nicht gleich <bLa>) und Ziffern, 1. Zeichen muss Buchstabe oder Unterstrich sein, theoretisch beliebig lang, praktisch kleiner 256 Zeichen, keine Umlaute verwenden.
+\paragraph{inhaltsmodell:}\hspace*{0,5mm}\linebreak
+\begin{tabular}{ll}
+  EMPTY & (Bsp. aus XHTML: $<$!ELEMENT br EMPTY$>$ für leere Tags ohne Inhalt)\\
+  (\#PCDATA) & für beliebige Zeichenfolgen (außer „\textless“, „\textgreater“, „\&“ und „"“) insbesondere keine Tags\\
+   & z.B. $<$!ELEMENT title (\#PCDATA)$>$\\
+  sequenz & z.B. (tagname1, tagname2) -> Abfolge von tagname1 und tagname2\\
+   & z.B. <!ELEMENT html (head, body)\\
+  auswahl & z.B. (tagname1 | tagname2)\\
+  gemischt & ((\#PCDATA) | auswahl)*  
+\end{tabular}
+\vspace*{2mm}
+
+Alle Inhaltsmodelle können mit nachgestellten Quantoren versehen werden:
+\begin{itemize}
+\item (inhaltsmodell)* beliebig oft (inkl. Keinmal)
+\item (inhaltsmodell)+	beliebig oft, aber mindestens einmal
+\item (inhaltsmodell)?	einmal oder keinmal
+\end{itemize}
+\vspace*{2mm}
+
+Entitäten:\\
+\begin{tabular}{ccc}
+  \&lt & „\textless“ & Less than\\
+  \&gt & „\textgreater“ & Greater than\\
+  \&amp	& „\&“	& Ampersand\\
+  \&quot & „"“ & Quotation mark\\
+  \&auml & „ä“ & \\
+  \&Auml & „Ä“ & \\	
+\end{tabular}
+
+\newpage
+\section{ATTLIST-Deklaration}
+\begin{lstlisting}[caption={Syntax einer ATTLIST-Deklaration}, label={lst:attlist}, language={XML}]
+  <!ATTLIST tagname attrname attrtype voreinstellung (optional) > 
+\end{lstlisting}
+\paragraph{attrname:}Name des Attributs, genauso aufgebaut wie Tagnamen
+\paragraph{attrtype:}\hspace*{0,5mm}\\
+\begin{tabular}{ll}
+CDATA & beliebige Zeichenfolgen inklusive „$<$“ und „$>$“, Einschränkung bei einfachen/doppelten Anführungszeichen\\
+ID & dokumentweit eindeutiger Wert, Einschränkung an Werteraum wie bei Tag- und Attributnamen! d.h. z.B. Zahlenwerte sind keine gültigen Werte vom Typ ID!	Beispiel aus HTML: $<$!ATTLIST a id ID$>$\\
+IDREF & Referenz/Verweis auf einen ID-Wert, Einschränkung der Werte wie oben, aber keine 	Eindeutigkeit gefordert, da beliebig oft auf denselben ID-Wert verwiesen werden darf\\
+IDREFS & beliebig viele ID-Werte, getrennt durch Leerzeichen\\
+NMTOKEN(S) & „Name“, d.h. Zeichenfolge von beliebig vielen Buchstaben, Ziffern, manchen Sonderzeichen (insb. aber kein Leerzeichen), auch das erste Zeichen darf ein beliebiges Zeichen der Zahlenmenge sein bzw. mehrere Namen durch Leerzeichen getrennt\\
+ & aufzaehlung: (nmtoken1|nmtoken2|nmtoken3|…) der Attributwert kann nur einer der aufgeführten „Namen“ sein\\
+ENTITY & Verweis auf Entitäten -$>$ externe (auch binäre) Daten\\
+ENTITIES & Verweis auf Entitäten -$>$ externe (auch binäre) Daten\\
+NOTATION & Daten mit spezieller Interpretation\\
+\end{tabular}\\
+\paragraph{voreinstellung:}\hspace*{0,5mm}\\
+\begin{tabular}{ll}
+\#REQUIRED & Pflichtattribut\\
+\#IMPLIED & optionales Attribut\\
+\#FIXED & wert, Attribut mit festem Wert wert\\
+wert & \#IMPLIED-Attribut mit Default-Wert wert\\
+$[$fehlt$]$ & \#IMPLIED-Attribut ohne Default-Wert\\
+\end{tabular}
+
+\newpage
+Die „Gültigkeit“ einer XML-Datei kann anhand der DOCTYPE-Deklaration und der darin referenzierten DTD überprüft werden -$>$ mittels einem Validator z.B. für HTML-Dateien "http://validator.w3.org/".\\
+Problem: Zugriff des Validators auf die DTD? Muss die DTD auf einem öffentlich zugänglichen WebSpace liegen? -$>$ NEIN, Abhilfe: Inline-DTD, siehe das Beispiel aus Listing \vref{lst:inline-dtd}.
+\begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
+  <?xml version="1.0" ?>
+  <!DOCTYPE bla [
+    <!ELEMENT ...>
+      .
+      .
+    <!ATTLIST ...>
+      .
+      .
+  ]>
+  <bla>
+      .     
+      .
+  </bla> 
+\end{lstlisting}
+
+\newpage
+\subsection{Beispiel}
+\begin{tabular}{l|l|l|l|l}
+\textbf{Name}	& \textbf{Vorname}	& \textbf{Matrikelnummer}	& \textbf{Kursbezeichnung}	& \textbf{Wahlfach}\\\hline
+Müller	& Max		& 012345	& TINF12B3	& WuMBasis\\
+Maier	& Moritz	& 4711		& TINF12B3	& Shit\\
+Schulze	& Marta		& 0815		& TINF12B5	& Gaming\\
+\end{tabular}	
+
+\begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
+  <studis>
+    <studi matrikelnummer="012345">
+      <name nach="Mueller" vor="Max" />
+      <kurs> TINF12B3 </kurs>
+      <wahlfach> WuMM </wahlfach>
+    </studi>
+    <!-- entsprechend fuer Maier und Schulze -->
+  </studis>
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
+  <!ELEMENT studis (studi)*>
+  <!ELEMENT studi (name, kurs, wahlfach)>
+  <!ELEMENT name EMPTY>
+  <!ATTLIST name nach CDATA #REQUIRED attrtype evtl. NMTOKEN vor CDATA \#REQUIRED attrtype evtl. NMTOKENS>
+\end{lstlisting}
+
+Anzeige abstrakter XML-Daten (nicht HTML oder SVG) im XML-fähigen WebBrowser?
+\begin{itemize}
+\item strukturierte Liste (mit Einschränkungen, Elemente aus- und einklappbar)
+\item nicht besonders anschaulich
+\item kann mit CSS deutlich „aufgehübscht“ werden
+\item bessere Variante: XSLT (XML Style Sheet Language Transformation)\\
+Achtung: Trotz des Namensbestandteils “Stylesheet macht eine XSLT viel mehr als nur Aussehen festzulegen!
+\end{itemize}
