@@ -92,8 +92,136 @@ textueller Wert:
 
 \paragraph{xsl:apply-templates Syntax}\hspace{1mm}
 \begin{lstlisting}[caption={xsl:apply-templates Syntax}, label={lst:xsl:apply-templates}, language={XML}]
-<xsl:apply-templates select="XPath-Ausdruck" />
+  <xsl:apply-templates select="XPath-Ausdruck" />
 \end{lstlisting}
 \begin{itemize}
 \item sucht abhängig vom Kontextknoten nach weiteren passenden Templates und führt diese aus (für Kindelemente, kann weiter eingeschränkt und auch ausgeweitet werden über optionales select-Attribut mit XPath-Ausdruck)
+\item rekursiver Aufruf
 \end{itemize}
+
+\paragraph{xsl:for-each Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:for-each Syntax}, label={lst:xsl:for-each}, language={XML}]
+  <xsl:for-each select="XPath-Ausdruck">
+    <!-- Block, welcher fuer jeden Knoten in der durch den XPath-Ausdruck bestimmten Knotenmenge ausgegeben wird - relative Position im Dokumentbaum entspricht diesem Knoten -->
+  </xsl:for-each>
+\end{lstlisting}
+\begin{itemize}
+\item Schleife $\rightarrow$ iterativer Aufruf
+\end{itemize}
+
+\paragraph{xsl:if Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:if Syntax}, label={lst:xsl:if}, language={XML}]
+  <xsl:if select="XPath-Ausdruck">
+    <!-- Block, welcher ausgegeben wird, falls Bedingung wahr ist -->
+    <!-- Achtung: Es gibt kein else! -->
+  </xsl:if>
+\end{lstlisting}
+Bedingung: Wie bei Prädikaten\\
+z.B. einfacher XPath-Ausdruck $\Rightarrow$ wahr, falls Knotenmenge nicht leer.\\
+„echte“ Bedingungen, z.B. xpath1 \&lt xpath2 (oder \&gt oder $=$ oder $!=$ oder \&lt= oder \&gt=).
+
+\paragraph{xsl:choose Syntax}
+$<$xsl:choose$>$ ist ähnlich dem switch-case normaler Programmiersprachen.
+\begin{lstlisting}[caption={xsl:choose Syntax}, label={lst:xsl:choose}, language={XML}]
+  <xsl:choose>
+    <xsl:when test="bedingung1">
+      <!-- Ausgabe falls Bedingung1 wahr ergibt -->
+    </xsl:when>
+    <xsl:when test="bedingung2"> ..... </xsl:when>
+    <!-- beliebig viele xsl:when moeglich -->
+    
+    <xsl:otherwise>
+      <!-- Ausgabe, falls keine der vorigen Bedingungen wahr ergibt.
+      Otherwise ist Optional -->
+    </xsl:otherwise>    
+  </xsl:choose>
+\end{lstlisting}
+
+
+\paragraph{xsl:sort Syntax}
+Innerhalb von xsl:apply-templates> und <xsl:for-each>
+\begin{lstlisting}[caption={xsl:sort Syntax}, label={lst:xsl:sort}, language={XML}]
+  <xsl:sort select="XPath" (oder="descending", default=ascending) [data-type="number" (default=text)] />
+\end{lstlisting}
+$<$xsl:sort$>$ ist das erste Kind von $<$xsl:for-each$>$ (bzw. einziges Kind von $<$xsl:apply-templates$>$)\\
+auch mehrere $<$xsl:sort$>$ unmittelbar hinter einander sind möglich für Mehrfachsortierung (bei Gleichheit des vorigen Sortierkriteriums relevant)
+
+\paragraph{Benamte xsl:template Syntax}
+Innerhalb von $<$xsl:apply-templates$>$ und $<$xsl:for-each$>$
+\begin{lstlisting}[caption={xsl:template mit name Syntax}, label={lst:xsl:template_with_name}, language={XML}]
+  <xsl:template name="bla">
+    <!-- irgendeine Ausgabe -->
+  </xsl:template>
+\end{lstlisting}
+Diese benamten Templates können überall (in jedem Template) aufgerufen werden. Die Syntax dazu ist in Listing \vref{lst:xsl:call-template} aufgeführt.\\
+\begin{lstlisting}[caption={xsl:call-template Syntax}, label={lst:xsl:call-template}, language={XML}]
+  <xsl:call-template name="bla" />
+\end{lstlisting}
+
+\paragraph{normale Templates}\hspace{1mm}
+\begin{lstlisting}[caption={Normale xsl:template Syntax}, label={lst:xsl:template_normal}, language={XML}]
+  <xsl:template match="XPath" [mode="fasel"]>
+  
+  </xsl:template>
+\end{lstlisting}
+\begin{itemize}
+\item werden per $<$xsl:apply-templates$>$ nur dann aufgerufen, wenn dieses ebenfalls ein mode-Attribut mit demselben Wert hat!
+\item damit sind mehrfache Templates für denselben Knoten und damit auch mehrfache Durchläufe durch den Knotenbaum mit verschiedenen Ausgaben möglich
+\end{itemize}
+
+\paragraph{Variable?}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:variable Syntax}, label={lst:xsl:variable}, language={XML}]
+  <xsl:variable name="meine_var" select="wert" />
+\end{lstlisting}
+\begin{itemize}
+\item Der Variablenwert kann nur einmal gesetzt und nicht mehr verändert werden
+\item Wert der Variablen kann in jedem XPath-Ausdruck mit \$meine\_var verwendet werden
+\item Verwendung z.B. zum „Zwischenspeichern“ eines Wertes abhängig von der Knotenposition und Wiederverwenden auch dann, wenn die Knotenposition verändert wurde
+\end{itemize}
+\begin{lstlisting}[caption={Beispiel für Variablendeklaration}, label={lst:xsl:variable}, language={XML}]
+  <bla wert="fasel">
+    <blubb wert="fas" />
+    <blubb werd="el" />
+    <blubb wert="fasel" />
+  </bla>
+\end{lstlisting}
+Bearbeite nur die Knoten blubb, deren Attribut „wert“ denselben Wert hat wie das Attribut „wert“ des Elternknotens bla!\\
+\begin{lstlisting}[caption={Beispiel für Variable in Template}, label={lst:xsl:variable_in_template}, language={XML}]
+  <xsl:template match="bla">
+    <xsl:variable name="blawert" select="@wert" />
+    <xsl:for-each select="blubb[@wert=$blawert]">
+      <!-- Wir haben einen blubb-Knoten mit identischem Wert wie der bla-Knoten! -->
+    </xsl:for-each>
+  </xsl:template>
+\end{lstlisting}
+
+Ausgabe ins Zieldokument:
+\begin{itemize}
+\item direkte Übernahme von Tags, Texten, Werten von Attributen ins Zieldokument, wie im Template notiert\\
+aber: Whitespace wird auf ein Trennzeichen reduziert!
+\item Text innerhalb von $<$xsl:text$>$ $\Rightarrow$ Whitespace bleibt erhalten
+\end{itemize}
+
+\begin{lstlisting}[caption={Beispiel für Variable in Template}, label={lst:xsl:variable_in_template}, language={XML}]
+  <xsl:template match="bla">
+    <fuba>
+      <xsl:attribute name="automobil">
+        <xsl:value-of select="@wert" />
+      </xsl:attribute>
+    </fuba>
+  </xsl:template>
+\end{lstlisting}
+
+\paragraph{xsl:attribute Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:sort Syntax}, label={lst:xsl:sort}, language={XML}]
+  <xsl:attribute name="aname">
+    <!--Wert des Attributs -->
+  </xsl:attribute>
+\end{lstlisting}
+\begin{itemize}
+\item Gibt dem unmittelbar vorher erzeugten Elemntknoten (und noch offenem Knoten) einen Attributknoten „@aname“ mit Wert „Wert des Attributs“
+\end{itemize}
+
+\section{Übung}
+http://dh.jroethig.de $\rightarrow$ WuMMbasIS\\
+$\Rightarrow$XML und XSLT

@@ -27,6 +27,15 @@
 \contentsline {subsection}{\numberline {4.2.3}Pr\IeC {\"a}dikate}{16}{subsection.4.2.3}
 \contentsline {paragraph}{xsl:value-of Syntax}{17}{lstnumber.4.1.17}
 \contentsline {paragraph}{xsl:apply-templates Syntax}{17}{lstnumber.4.2.1}
-\contentsline {chapter}{\numberline {}{Abbildungsverzeichnis}}{18}{chapter*.4}
-\contentsline {chapter}{\numberline {}{Tabellenverzeichnis}}{19}{chapter*.5}
-\contentsline {chapter}{\numberline {}{Listings}}{20}{chapter*.6}
+\contentsline {paragraph}{xsl:for-each Syntax}{18}{lstnumber.4.3.1}
+\contentsline {paragraph}{xsl:if Syntax}{18}{lstnumber.4.4.3}
+\contentsline {paragraph}{xsl:choose Syntax}{18}{lstnumber.4.5.4}
+\contentsline {paragraph}{xsl:sort Syntax}{18}{lstnumber.4.6.12}
+\contentsline {paragraph}{Benamte xsl:template Syntax}{19}{lstnumber.4.7.1}
+\contentsline {paragraph}{normale Templates}{19}{lstnumber.4.9.1}
+\contentsline {paragraph}{Variable?}{19}{lstnumber.4.10.3}
+\contentsline {paragraph}{xsl:attribute Syntax}{20}{lstnumber.4.14.7}
+\contentsline {subsection}{\numberline {4.2.4}\IeC {\"U}bung}{21}{subsection.4.2.4}
+\contentsline {chapter}{\numberline {}{Abbildungsverzeichnis}}{22}{chapter*.4}
+\contentsline {chapter}{\numberline {}{Tabellenverzeichnis}}{23}{chapter*.5}
+\contentsline {chapter}{\numberline {}{Listings}}{24}{chapter*.6}
