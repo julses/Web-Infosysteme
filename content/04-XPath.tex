@@ -24,31 +24,23 @@ außerdem: ausführliche Notation\\
 axis::nodetest[predicate]\\
 (predicate ist optional)\\
 
-\subsection{Achsenausdrücke (ausführliche Notation}
-\begin{tabular}{lll}
+\subsection{Achsenausdrücke (ausführliche Notation)}
+\begin{tabularx}{\textwidth}{lXl}
 root & Wurzelknoten & „/“\\
-child & Kindknoten & „/“ {\small nicht am Anfang bzw. weglassen}\\
+child & Kindknoten & „/“ {\tiny (nicht am An-}\\
+ & & {\tiny fang bzw. weglassen)}\\
 parent & Elternknoten & „..“\\
-self & aktueller Knoten & \\
- & (Kontextknoten) & „.“\\
-ancestor & Vorfahren, übergeordnete Knoten & \\
- & (Eltern, Großeltern,...)& \\
-descendent & Nachkommen, untergeordnete Knoten & \\
- & (Kinder mit Kindeskinder) & \\
+self & aktueller Knoten (Kontextknoten) & „.“\\
+ancestor & Vorfahren, übergeordnete Knoten (Eltern, Großeltern,...)& \\
+descendent & Nachkommen, untergeordnete Knoten (Kinder mit Kindeskinder) & \\
 ancestor-or-self & Vorfahren inkl. Kontextknoten & \\
 descendent-or-self & Nachkommen inkl. Kontextknoten & \\
-following & nachfolgende Knoten & \\
- & (ohne Kinder und Kindeskinder des & \\
- & Kontextknotens) & \\
-following-sibling & nachfolgende Geschwisterknoten (d.h. & \\
- & nachfolgende Knoten mit demselben & \\
- & Elternknoten wie der Kontextknoten) & \\
+following & nachfolgende Knoten (ohne Kinder und Kindeskinder des Kontextknotens) & \\
+following-sibling & nachfolgende Geschwisterknoten (d.h. nachfolgende Knoten mit demselben Elternknoten wie der Kontextknoten) & \\
 preceding & vorhergehende Knoten & \\
-preceding-sibling & vorhergehende Geschwisterknoten (d.h. & \\
- & vorhergehende Knoten mit demselben & \\
- & Elternknoten wie der Kontextknoten) & \\
+preceding-sibling & vorhergehende Geschwisterknoten (d.h. vorhergehende Knoten mit demselben Elternknoten wie der Kontextknoten) & \\
 attribute & Attributknoten & „@“
-\end{tabular}
+\end{tabularx}
 
 \subsection{Knotentest}
 \begin{itemize}

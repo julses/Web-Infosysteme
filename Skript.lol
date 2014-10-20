@@ -7,10 +7,10 @@
 \contentsline {lstlisting}{\numberline {1.6}Baumerstellung per !ELEMENT}{10}{lstlisting.1.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {lstlisting}{\numberline {3.1}Definition einer XML-Datei zur Transformation}{13}{lstlisting.3.1}
-\contentsline {lstlisting}{\numberline {3.2}Transformierte XML-Datei}{14}{lstlisting.3.2}
-\contentsline {lstlisting}{\numberline {3.3}Syntax einer xsl:template-Deklaration}{14}{lstlisting.3.3}
+\contentsline {lstlisting}{\numberline {3.1}Definition einer XML-Datei zur Transformation}{12}{lstlisting.3.1}
+\contentsline {lstlisting}{\numberline {3.2}Transformierte XML-Datei}{13}{lstlisting.3.2}
+\contentsline {lstlisting}{\numberline {3.3}Syntax einer xsl:template-Deklaration}{13}{lstlisting.3.3}
 \addvspace {10\p@ }
-\contentsline {lstlisting}{\numberline {4.1}Praktisches Beispiel f\IeC {\"u}r xsl:template}{18}{lstlisting.4.1}
-\contentsline {lstlisting}{\numberline {4.2}xsl:value-of Syntax}{18}{lstlisting.4.2}
-\contentsline {lstlisting}{\numberline {4.3}xsl:apply-templates Syntax}{18}{lstlisting.4.3}
+\contentsline {lstlisting}{\numberline {4.1}Praktisches Beispiel f\IeC {\"u}r xsl:template}{17}{lstlisting.4.1}
+\contentsline {lstlisting}{\numberline {4.2}xsl:value-of Syntax}{17}{lstlisting.4.2}
+\contentsline {lstlisting}{\numberline {4.3}xsl:apply-templates Syntax}{17}{lstlisting.4.3}

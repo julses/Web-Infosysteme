@@ -57,17 +57,17 @@ Document Type Definitionen (kurz: DTD)
 \begin{lstlisting}[caption={Syntax einer ELEMENT-Deklaration}, label={lst:doctype-declaration}, language={XML}]
   <!ELEMENT tagname inhaltsmodell>
 \end{lstlisting}
-\paragraph{tagname:}Name des Elements/Tags bestehend aus Buchstaben (Klein- und Großschreibung wird unterschieden, <bla> ist nicht gleich <bLa>) und Ziffern, 1. Zeichen muss Buchstabe oder Unterstrich sein, theoretisch beliebig lang, praktisch kleiner 256 Zeichen, keine Umlaute verwenden.
+\paragraph{tagname:}Name des Elements/Tags bestehend aus Buchstaben (Klein- und Großschreibung wird unterschieden, $<$bla$>$ ist nicht gleich $<$bLa$>$) und Ziffern, 1. Zeichen muss Buchstabe oder Unterstrich sein, theoretisch beliebig lang, praktisch kleiner 256 Zeichen, keine Umlaute verwenden.
 \paragraph{inhaltsmodell:}\hspace*{0,5mm}\linebreak
-\begin{tabular}{ll}
+\begin{tabularx}{\textwidth}{lX}
   EMPTY & (Bsp. aus XHTML: $<$!ELEMENT br EMPTY$>$ für leere Tags ohne Inhalt)\\
   (\#PCDATA) & für beliebige Zeichenfolgen (außer „\textless“, „\textgreater“, „\&“ und „"“) insbesondere keine Tags\\
    & z.B. $<$!ELEMENT title (\#PCDATA)$>$\\
-  sequenz & z.B. (tagname1, tagname2) -> Abfolge von tagname1 und tagname2\\
-   & z.B. <!ELEMENT html (head, body)\\
+  sequenz & z.B. (tagname1, tagname2) $\rightarrow$ Abfolge von tagname1 und tagname2\\
+   & z.B. $<$!ELEMENT html (head, body)$>$\\
   auswahl & z.B. (tagname1 | tagname2)\\
-  gemischt & ((\#PCDATA) | auswahl)*  
-\end{tabular}
+  gemischt & ((\#PCDATA) | auswahl)*)  
+\end{tabularx}
 \vspace*{2mm}
 
 Alle Inhaltsmodelle können mit nachgestellten Quantoren versehen werden:
@@ -79,14 +79,14 @@ Alle Inhaltsmodelle können mit nachgestellten Quantoren versehen werden:
 \vspace*{2mm}
 
 Entitäten:\\
-\begin{tabular}{ccc}
+\begin{tabularx}{\textwidth}{rcX}
   \&lt & „\textless“ & Less than\\
   \&gt & „\textgreater“ & Greater than\\
   \&amp	& „\&“	& Ampersand\\
   \&quot & „"“ & Quotation mark\\
   \&auml & „ä“ & \\
   \&Auml & „Ä“ & \\	
-\end{tabular}
+\end{tabularx}
 
 \newpage
 \section{ATTLIST-Deklaration}
@@ -95,17 +95,17 @@ Entitäten:\\
 \end{lstlisting}
 \paragraph{attrname:}Name des Attributs, genauso aufgebaut wie Tagnamen
 \paragraph{attrtype:}\hspace*{0,5mm}\\
-\begin{tabular}{ll}
+\begin{tabularx}{\textwidth}{lX}
 CDATA & beliebige Zeichenfolgen inklusive „$<$“ und „$>$“, Einschränkung bei einfachen/doppelten Anführungszeichen\\
 ID & dokumentweit eindeutiger Wert, Einschränkung an Werteraum wie bei Tag- und Attributnamen! d.h. z.B. Zahlenwerte sind keine gültigen Werte vom Typ ID!	Beispiel aus HTML: $<$!ATTLIST a id ID$>$\\
 IDREF & Referenz/Verweis auf einen ID-Wert, Einschränkung der Werte wie oben, aber keine 	Eindeutigkeit gefordert, da beliebig oft auf denselben ID-Wert verwiesen werden darf\\
 IDREFS & beliebig viele ID-Werte, getrennt durch Leerzeichen\\
 NMTOKEN(S) & „Name“, d.h. Zeichenfolge von beliebig vielen Buchstaben, Ziffern, manchen Sonderzeichen (insb. aber kein Leerzeichen), auch das erste Zeichen darf ein beliebiges Zeichen der Zahlenmenge sein bzw. mehrere Namen durch Leerzeichen getrennt\\
  & aufzaehlung: (nmtoken1|nmtoken2|nmtoken3|…) der Attributwert kann nur einer der aufgeführten „Namen“ sein\\
-ENTITY & Verweis auf Entitäten -$>$ externe (auch binäre) Daten\\
-ENTITIES & Verweis auf Entitäten -$>$ externe (auch binäre) Daten\\
+ENTITY & Verweis auf Entitäten $\rightarrow$ externe (auch binäre) Daten\\
+ENTITIES & Verweis auf Entitäten $\rightarrow$ externe (auch binäre) Daten\\
 NOTATION & Daten mit spezieller Interpretation\\
-\end{tabular}\\
+\end{tabularx}\\
 \paragraph{voreinstellung:}\hspace*{0,5mm}\\
 \begin{tabular}{ll}
 \#REQUIRED & Pflichtattribut\\
@@ -116,8 +116,8 @@ $[$fehlt$]$ & \#IMPLIED-Attribut ohne Default-Wert\\
 \end{tabular}
 
 \newpage
-Die „Gültigkeit“ einer XML-Datei kann anhand der DOCTYPE-Deklaration und der darin referenzierten DTD überprüft werden -$>$ mittels einem Validator z.B. für HTML-Dateien "http://validator.w3.org/".\\
-Problem: Zugriff des Validators auf die DTD? Muss die DTD auf einem öffentlich zugänglichen WebSpace liegen? -$>$ NEIN, Abhilfe: Inline-DTD, siehe das Beispiel aus Listing \vref{lst:inline-dtd}.
+Die „Gültigkeit“ einer XML-Datei kann anhand der DOCTYPE-Deklaration und der darin referenzierten DTD überprüft werden $\rightarrow$ mittels einem Validator z.B. für HTML-Dateien "http://validator.w3.org/".\\
+Problem: Zugriff des Validators auf die DTD? Muss die DTD auf einem öffentlich zugänglichen WebSpace liegen? $\rightarrow$ NEIN, Abhilfe: Inline-DTD, siehe das Beispiel aus Listing \vref{lst:inline-dtd}.
 \begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
   <?xml version="1.0" ?>
   <!DOCTYPE bla [
@@ -136,12 +136,12 @@ Problem: Zugriff des Validators auf die DTD? Muss die DTD auf einem öffentlich 
 
 \newpage
 \subsection{Beispiel}
-\begin{tabular}{l|l|l|l|l}
+\begin{tabularx}{\textwidth}{l|l|l|l|X}
 \textbf{Name}	& \textbf{Vorname}	& \textbf{Matrikelnummer}	& \textbf{Kursbezeichnung}	& \textbf{Wahlfach}\\\hline
 Müller	& Max		& 012345	& TINF12B3	& WuMBasis\\
 Maier	& Moritz	& 4711		& TINF12B3	& Shit\\
 Schulze	& Marta		& 0815		& TINF12B5	& Gaming\\
-\end{tabular}	
+\end{tabularx}	
 
 \begin{lstlisting}[caption={Listeneinträge}, label={lst:inline-dtd}, language={XML}]
   <studis>
