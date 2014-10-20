@@ -143,7 +143,7 @@ Maier	& Moritz	& 4711		& TINF12B3	& Shit\\
 Schulze	& Marta		& 0815		& TINF12B5	& Gaming\\
 \end{tabular}	
 
-\begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
+\begin{lstlisting}[caption={Listeneinträge}, label={lst:inline-dtd}, language={XML}]
   <studis>
     <studi matrikelnummer="012345">
       <name nach="Mueller" vor="Max" />
@@ -154,11 +154,11 @@ Schulze	& Marta		& 0815		& TINF12B5	& Gaming\\
   </studis>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Inline-DTD Beispiel}, label={lst:inline-dtd}, language={XML}]
+\begin{lstlisting}[caption={Baumerstellung per !ELEMENT}, label={lst:inline-dtd}, language={XML}]
   <!ELEMENT studis (studi)*>
   <!ELEMENT studi (name, kurs, wahlfach)>
   <!ELEMENT name EMPTY>
-  <!ATTLIST name nach CDATA #REQUIRED attrtype evtl. NMTOKEN vor CDATA \#REQUIRED attrtype evtl. NMTOKENS>
+  <!ATTLIST name nach CDATA #REQUIRED attrtype evtl. NMTOKEN vor CDATA #REQUIRED attrtype evtl. NMTOKENS>
 \end{lstlisting}
 
 Anzeige abstrakter XML-Daten (nicht HTML oder SVG) im XML-fähigen WebBrowser?

@@ -2,7 +2,7 @@
    %draft,     % Entwurfsstadium
    final,      % fertiges Dokument
 %%%% --- Schriftgröße ---
-   10.5pt,
+   10pt,
    %smallheadings,    % kleine Überschriften
    %normalheadings,   % normale Überschriften
    %bigheadings,       % große Überschriften
@@ -153,27 +153,6 @@
 % ===========================================================
 
 
-% Glossar ===================================================
-\usepackage[
-	toc, 		% Das Glossar ins TOC eintragen
-	numberline,	% Fügt ein numberline im TOC Eintrag hinzu (Name wird bündig zu anderen section-Namen angezeigt und nich bündig zur Kapitelzahl)
-	nonumberlist, % Zeigt keine Seitenzahlen an, auf denen die Begriffe vorkommen
-	section=chapter, % Eintrag im TOC sitzt auf section-Ebene
-	style=altlist, % Dartstellung als Liste, Beschreibung beginnt in nächster Zeile
-	hyperfirst=true % Erstes Auftreten ist Hyperlink
-]{glossaries}
-\usepackage[
-	footnote,	% Full names appear in the footnote
-%	smaller,	% Print acronym in smaller fontsize
-	printonlyused % Nur benutze Akronyme ins Verzeichnis aufnehmen
-]{acronym}
-\usepackage[absolute]{textpos}
-\setlength{\TPHorizModule}{1cm}% Horizontale Einheit
-\setlength{\TPVertModule}{1cm}	% Vertikale Einheit
-\makeglossaries
-% ===========================================================
-
-
 
 \setcounter{secnumdepth}{2}		% Abbildungsnummerierung mit groesserer Tiefe
 \setcounter{tocdepth}{2}		% Inhaltsverzeichnis mit groesserer Tiefe
@@ -244,6 +223,7 @@
 \colorlet{commencolor}{blue!0!black!100}
 \definecolor{emphcolor}{rgb}{0,0,0.75}
 \definecolor{lightgray}{rgb}{.9, .9, .9}
+\definecolor{blue}{RGB}{58,95,205}
 \definecolor{black}{RGB}{0, 0, 0}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 % ===========================================================
@@ -261,6 +241,7 @@
   breaklines=true,            % Zeilen werden Umgebrochen
   stringstyle=\color{stringcolor}, % Farbe der String
 	keywordstyle=\bfseries\color{violet},
+	ndkeywordstyle=\bfseries\color{blue},
 	commentstyle=\itshape\color{darkgray},
 	emphstyle=\color{red},
 	basicstyle=\small\ttfamily\color{black}\singlespacing, % Standardschrift
@@ -311,11 +292,14 @@
 }
 
 \lstdefinelanguage{XML}{
-  keywords={<?xml, <studi, <studis>, ?>, />, >, </studis>},
-  ndkeywords={version, xmlns:xsl, xml, xsl:stylesheet},
+  keywords={DOCTYPE, PUBLIC, ELEMENT, ATTLIST, xml},
+  alsoletter={:,-},
+  morekeywords={xsl:stylesheet, xsl:template, xsl:applytemplates, xsl:value-of, xsl:apply-templates },
+  ndkeywords={version, select, match},
   sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{<!--}{-->},
+  comment=[s]{!--}{--},
+  morecomment=[s]{<?}{?>},
+  morestring=[s]{>}{<},
   morestring=[b]',
   morestring=[b]"
 }

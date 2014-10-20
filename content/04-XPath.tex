@@ -1,3 +1,107 @@
 \chapter{XPath}
 
-Sprache zur Auswahl bestimmter Knoten eines XML-Dokuments. Meist relativ zur aktuellen Position im XML-Dokument
+\section{XPath Baumstruktur}
+Sprache zur Auswahl bestimmter Knoten eines XML-Dokuments. Meist relativ zur aktuellen Position im XML-Dokument.\\
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth]{XPath-BaumStruktur.png}
+  \caption{Baumdarstellung einer XML-Datei}
+\end{figure}\\
+Beschreibung der Knotensyntax:\\
+„.“ $\rightarrow$ aktueller Knoten\\
+„..“ $\rightarrow$ Elternknoten\\
+„tagname“ $\rightarrow$ Kindelement mit "tagname"\\
+„@attrname“ $\rightarrow$ Attribut mit "attrname"\\
+„text()“ $\rightarrow$ Textknoten\\
+„/“ $\rightarrow$ Wurzel\\
+„//“ $\rightarrow$ irgendwo im Baum\\
+mehrere Lokalisierungsschritte werden durch „/“ verbunden nacheinander angegeben. Bsp.: /studis/studi/name/nachname/text()\\
+\\
+XPath Ausdrücke liefern im allgemeinen eine Knotenmenge, d.h. mehrere Knoten (oder auch keinen)
+
+\section{Lokalisierungsschritte}
+bisher: „verkürzte Notation“\\
+außerdem: ausführliche Notation\\
+axis::nodetest[predicate]\\
+(predicate ist optional)\\
+
+\subsection{Achsenausdrücke (ausführliche Notation}
+\begin{tabular}{lll}
+root & Wurzelknoten & „/“\\
+child & Kindknoten & „/“ {\small nicht am Anfang bzw. weglassen}\\
+parent & Elternknoten & „..“\\
+self & aktueller Knoten & \\
+ & (Kontextknoten) & „.“\\
+ancestor & Vorfahren, übergeordnete Knoten & \\
+ & (Eltern, Großeltern,...)& \\
+descendent & Nachkommen, untergeordnete Knoten & \\
+ & (Kinder mit Kindeskinder) & \\
+ancestor-or-self & Vorfahren inkl. Kontextknoten & \\
+descendent-or-self & Nachkommen inkl. Kontextknoten & \\
+following & nachfolgende Knoten & \\
+ & (ohne Kinder und Kindeskinder des & \\
+ & Kontextknotens) & \\
+following-sibling & nachfolgende Geschwisterknoten (d.h. & \\
+ & nachfolgende Knoten mit demselben & \\
+ & Elternknoten wie der Kontextknoten) & \\
+preceding & vorhergehende Knoten & \\
+preceding-sibling & vorhergehende Geschwisterknoten (d.h. & \\
+ & vorhergehende Knoten mit demselben & \\
+ & Elternknoten wie der Kontextknoten) & \\
+attribute & Attributknoten & „@“
+\end{tabular}
+
+\subsection{Knotentest}
+\begin{itemize}
+\item Knotenname/tagname/attrname
+\item „*“ als Joker für beliebige Knotennamen
+\item text(), comment() für Text- bzw. Kommentarknoten 
+\end{itemize}
+
+\subsection{Prädikate}
+Prädikate stehen immer in eckigen Klammern: „[Prädikatausdruck]“\\
+\begin{itemize}
+\item Zahl: Nummer des Knotens, Nummerierung beginnt bei 1
+\item Vergleich: z.B. = [@farbe = "blau"] weitere: !=,$>$,$<$,$>=$,$<=$
+\item numerische Operatoren: +,-,*,div,mod (alles Ganzzahloperatoren)
+\item knotenmengen Funktionen: count (...) Anzahl der Elemente
+\end{itemize}
+\hspace{0,3cm}\\
+zurück zu:
+\begin{lstlisting}[caption={Praktisches Beispiel für xsl:template}, label={lst:template}, language={XML}]
+  <xsl:template match="studis">
+    <html>
+      <head>
+        <title>Studis an der DHBW</title>
+      </head>
+      <body>
+        <table><xsl:applytemplates /></table>
+      </body>
+    </html>
+  </xsl:template>
+  
+  <xsl:template match="studi">
+    <tr>
+      <td><xsl:value-of select="name/nachname/text()" /></td>
+      <td><xsl:value-of select="name/vorname" /></td>
+    </tr>
+  </xsl:template>
+\end{lstlisting}
+
+\paragraph{xsl:value-of Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:value-of Syntax}, label={lst:value-of}, language={XML}]
+<xsl:value-of select="XPath-Ausdruck" />
+\end{lstlisting}
+liefert den textuellen Wert eines Knotens bzw. einer Knotenmenge zurück
+textueller Wert:
+\begin{itemize}
+\item eines Textknotens $\Rightarrow$ Text selbst eines Attributknotens $\Rightarrow$ Wert des anhängenden Textknotens
+\item eines Elementknotens (eines „Tags“) $\Rightarrow$ Konkanetation der Werte aller Elemente und Textknoten, welche Kinder des Elementknotens sind
+\end{itemize}
+
+\paragraph{xsl:apply-templates Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:apply-templates Syntax}, label={lst:xsl:apply-templates}, language={XML}]
+<xsl:apply-templates select="XPath-Ausdruck" />
+\end{lstlisting}
+\begin{itemize}
+\item sucht abhängig vom Kontextknoten nach weiteren passenden Templates und führt diese aus (für Kindelemente, kann weiter eingeschränkt und auch ausgeweitet werden über optionales select-Attribut mit XPath-Ausdruck)
+\end{itemize}
