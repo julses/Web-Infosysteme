@@ -57,9 +57,11 @@ Prädikate stehen immer in eckigen Klammern: „[Prädikatausdruck]“\\
 \item numerische Operatoren: +,-,*,div,mod (alles Ganzzahloperatoren)
 \item knotenmengen Funktionen: count (...) Anzahl der Elemente
 \end{itemize}
-\hspace{0,3cm}\\
-zurück zu:
+
+\section{XSL-Template Definition und Verwendung}
+Das Listing \vref{lst:template} zeigt ein Beispiel zur tabellarischenDdarstellung aller in der XML gespeicherten Studierenden jeweils mit Vor- und Nachname.
 \begin{lstlisting}[caption={Praktisches Beispiel für xsl:template}, label={lst:template}, language={XML}]
+  <?xml version="1.0"?>
   <xsl:template match="studis">
     <html>
       <head>
@@ -79,17 +81,6 @@ zurück zu:
   </xsl:template>
 \end{lstlisting}
 
-\paragraph{xsl:value-of Syntax}\hspace{1mm}
-\begin{lstlisting}[caption={xsl:value-of Syntax}, label={lst:value-of}, language={XML}]
-<xsl:value-of select="XPath-Ausdruck" />
-\end{lstlisting}
-liefert den textuellen Wert eines Knotens bzw. einer Knotenmenge zurück
-textueller Wert:
-\begin{itemize}
-\item eines Textknotens $\Rightarrow$ Text selbst eines Attributknotens $\Rightarrow$ Wert des anhängenden Textknotens
-\item eines Elementknotens (eines „Tags“) $\Rightarrow$ Konkanetation der Werte aller Elemente und Textknoten, welche Kinder des Elementknotens sind
-\end{itemize}
-
 \paragraph{xsl:apply-templates Syntax}\hspace{1mm}
 \begin{lstlisting}[caption={xsl:apply-templates Syntax}, label={lst:xsl:apply-templates}, language={XML}]
   <xsl:apply-templates select="XPath-Ausdruck" />
@@ -97,6 +88,17 @@ textueller Wert:
 \begin{itemize}
 \item sucht abhängig vom Kontextknoten nach weiteren passenden Templates und führt diese aus (für Kindelemente, kann weiter eingeschränkt und auch ausgeweitet werden über optionales select-Attribut mit XPath-Ausdruck)
 \item rekursiver Aufruf
+\end{itemize}
+
+\paragraph{xsl:value-of Syntax}\hspace{1mm}
+\begin{lstlisting}[caption={xsl:value-of Syntax}, label={lst:value-of}, language={XML}]
+  <xsl:value-of select="XPath-Ausdruck" />
+\end{lstlisting}
+liefert den textuellen Wert eines Knotens bzw. einer Knotenmenge zurück
+textueller Wert:
+\begin{itemize}
+\item eines Textknotens $\Rightarrow$ Text selbst eines Attributknotens $\Rightarrow$ Wert des anhängenden Textknotens
+\item eines Elementknotens (eines „Tags“) $\Rightarrow$ Konkanetation der Werte aller Elemente und Textknoten, welche Kinder des Elementknotens sind
 \end{itemize}
 
 \paragraph{xsl:for-each Syntax}\hspace{1mm}
@@ -213,7 +215,7 @@ aber: Whitespace wird auf ein Trennzeichen reduziert!
 \end{lstlisting}
 
 \paragraph{xsl:attribute Syntax}\hspace{1mm}
-\begin{lstlisting}[caption={xsl:sort Syntax}, label={lst:xsl:sort}, language={XML}]
+\begin{lstlisting}[caption={xsl:attribute Syntax}, label={lst:xsl:attribute}, language={XML}]
   <xsl:attribute name="aname">
     <!--Wert des Attributs -->
   </xsl:attribute>

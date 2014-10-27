@@ -1,0 +1,98 @@
+\chapter{Grafikformate im Web}
+\begin{table}[ht]
+\begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+
+\hfil\bfseries Rastergrafiken
+&
+\hfil\bfseries Vektorgrafiken
+\\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+
+%% PROS, seperated by empty line or \par
+Aufteilung der Darstellungsfläche in meist gleichgroße und quadratische Teilflächen.\par
+Zuweisung (Attributierung) von Farbwerten, Helligkeitswerten, Transparenzwerten zu den einzelnen Teilflächen.\par
+\textcolor{green}{\large \textbf{$+$}} einfache Darstellung auf herkömmlichen rasterbasierten Ausgabegeräten (LCD, Laser, Tintenstrahldrucker)\par
+\textcolor{green}{\large \textbf{$+$}} einfache Übernahme von natürlichen Darstellungen möglich\par
+\textcolor{red}{\large{\textbf{$-$}}} Skalierbarkeit schlecht: Vergrößerung des Rasters
+
+&
+
+%% CONS, seperated by empty line or \par
+Etablieren eines Koordinatensystems auf der Darstellungsfläche\par
+Darstellung von geometrischen Grundformen.\par
+Attributierung der Grundformen mit Position, Größe, Farbe, Helligkeit, Transparenz, Muster, Strichdaten, ... (letztere optional)\par
+\textcolor{green}{\large \textbf{$+$}} nahezu unbegrenzte Skalierbarkeit\par
+\textcolor{green}{\large{\textbf{$+$}}} auch vektorbasierte Ausgabegeräte verfügbar: Plotter, vektorbasierte CRT-Bildschirme\par
+\textcolor{red}{\large{\textbf{$-$}}} Rendering ist recht aufwändig
+
+\end{tabularx}
+\end{table}
+
+\section{Rasterbasierte Grafikformate}
+Zuweisung von Farbe $\rightarrow$ Farbmodell: RGB (Rot+Grün+Blau)\\
+Helligkeit ergibt sich durch die Farbwerte: größere Werte $\rightarrow$ mehr Helligkeit.\\
+Üblicherweise wird jedem Farbanteil ein 8bit-Wert zugewiesen $\Rightarrow$ ein Bildpunkt benötigt $3*8bit=3Byte$\\
+Bsp: Digitalkamera mit 25Megapixel $\Rightarrow$ 75MByte Speichervolumen pro Bild, 16GByte Speicherkarte $\Rightarrow$ „nur“ 200 Bilder $\Rightarrow$ Kompression der Speicherdaten!!!\\
+
+\subsection{GIF}
+Graphics Interchange Format wurde in den 1980er Jahren erfunden und verwendet das RGB-Farbmodell. Das Format ist für computergenerierte schematische Darstellung mit großen einfarbigen Flächen gut geeignet.
+\paragraph{Manko}zu Beginn wird eine Farbtabelle mit maximal 256 Farben definiert und fortan jede Teilfläche nur noch mit einem 8bit Wert als Index auf diese Tabelle kodiert
+\begin{itemize}
+\item[$\Rightarrow$]Beschreibung der gleichzeitig verwendeten Farbenzahl auf 256 Farben (aus insgesamt $\approx$ 16Mio möglichen Farben)
+\item[$\Rightarrow$]Reduktion der Datenmenge durch Verlust an Information (welcher klar sichtbar ist). Anschließende Kompression der Folge von Indexwerten: modifizierte Lauflängenkodierung (Wert und Anzahl)
+\item[$\Rightarrow$]funktioniert bei häufig aufeinanderfolgenden Werten
+\item[$\Rightarrow$]verlust\underline{freies} Kompressionsverfahren bei GIF!!!
+\item[$\Rightarrow$]aber Voraussetzung für das Funktionieren des Kompressionsverfahrens ist die vorherige Reduktion auf 256 Farbwerte
+\item[$\Rightarrow$]Wahrscheinlichkeit gleicher aufeinanderfolgender Werte damit recht hoch!
+\end{itemize}
+\paragraph{Transparenz} eine Farbe kann als transparent markiert werden, jedoch ist keine Teiltransparenz möglich.
+\paragraph{Animated GIF}erlaubt kurze Sequenzen von Bildern, welche unmittelbar nacheinander dargestellt werden $\Rightarrow$ „Filmeffekt“
+
+\subsection{JPEG}
+Joint Photographic Expert Group verwendet das RGB-Farbmodell oder (alternativ) CMYK (für Druck)
+\begin{itemize}
+\item[$\Rightarrow$]keine Transparenz möglich
+\item[$\Rightarrow$]keine Reduktion der Farbanzahl, also 16Mio. (bei RGB) bzw. 4Mrd. (bei CMYK) Farben gleichzeitig (theoretisch) möglich
+\end{itemize}
+\newpage
+\subsubsection{DCT: Discrete Cosine Transform}
+\begin{itemize}
+\item[a)] Mittelwert über gesamtes (zunächst 8x8 Pixel) Areal
+\item[b)] Halbierung des (8x8 Pixel-) Blockes in x- und y-Richtung auf vier (4x4 Pixel-) Blöcke
+\item[c)] Berechnung der Mittelwerte dieser kleineren Blöcke
+\item[d)] Abspeichern als Differenzen der kleinen Blöcke zum großen Block
+\item[e)] weiter bis 1x1 Pixel-Block erreicht
+\end{itemize}
+DCT sorgt für denselben Informationsgehalt bei gleicher Datenmenge (keine Kompression!)\\
+"Qualitätseinstellung" durch Zusammenfassen von Koeffizienten mit ähnlichen Werten auf den gleichen Wert $\Rightarrow$ Informationsverlust, hilft der Effizienz des nachfolgenden Huffman
+
+\paragraph{Huffman-Codierung: verlustfrei}abhängig von der Häufigkeit ihres Vorkommens werden die zu kodierenden Werte mit kürzeren oder längeren Codewerten dargestellt $\Rightarrow$ variabel lange Codeworte für die Werte!\\
+Prinzip: Binärbaum\\
+Beispiel:
+\begin{table}[h]
+\begin{tabular}{rcl}
+0 & $\Rightarrow$ & fertig \\
+1  & $\Rightarrow$ & kommt noch was\\
+"0"  & $\Rightarrow$ & für häufigsten Wert\\
+"10"  & $\Rightarrow$ & für zweithäufogsten Wert\\
+"110" & $\Rightarrow$ & für dritthäufigsten Wert\\
+bis zu "11... 10" (255 Einsen) & $\Rightarrow$ & für seltensten Werte
+\end{tabular}
+\end{table}\\
+$\Rightarrow$funktioniert ganz gut bei DCT-Koeffizienten ("Abweichungswerten"), da die Abweichungen häufig kleine Werte darstellen $\Rightarrow$ kurze Codelänge für diese kleinen Werte\\
+$\Rightarrow$verlustfreie Komprimierung!
+
+\subsubsection{Nachfolgeformat: JPEG2000}
+\begin{itemize}
+\item[$\Rightarrow$] unterstützt RGBA (zusätzlicher Alpha-Kanal/Transparenz mit 8bit)
+\item[$\Rightarrow$] nur mit Lizenzgebühren zu verwenden
+\item[$\Rightarrow$] keine weite Verbreitung bislang
+\end{itemize}
+
+\newpage
+
+\subsection{PNG}
+Portable Network Graphics wurde in den 1990er Jahren als Ersatz für GIF entwickelt (wg. Patentproblematik)
+\paragraph{2 Modi:} \begin{itemize} \item indizierte Farben wie bei GIF
+\item unreduzierte RGBA-Farben\end{itemize}
+$\Rightarrow$beliebige (auch Teil-)Transparenz möglich. In jedem Fall verlustfreie Kompression nachgeschaltet.\\
+$\Rightarrow$für photorealistische Darstellungen of deutlich größeres Dateivolumen als bei JPEG! Dafür evtl. JNG $\rightarrow$ keine große Verbreitung.
