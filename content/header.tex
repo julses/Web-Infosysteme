@@ -304,6 +304,19 @@
   morestring=[b]"
 }
 
+\lstdefinelanguage{SVG}{
+  keywords={DOCTYPE, PUBLIC, ELEMENT, ATTLIST, xml, REQUIRED},
+  alsoletter={:,-},
+  morekeywords={line, circle, rect, ellipse, polyline, polygon},
+  ndkeywords={width, height, x, x1, x2, y, y1, y2, cx, cy, r, rx, ry, points},
+  sensitive=false,
+  comment=[s]{!--}{--},
+  morecomment=[s]{<?}{?>},
+  morestring=[s]{>}{<},
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \lstloadlanguages{XML, HTML, C++, JavaScript}
 % ===========================================================
 

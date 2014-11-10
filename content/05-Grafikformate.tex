@@ -96,3 +96,91 @@ Portable Network Graphics wurde in den 1990er Jahren als Ersatz für GIF entwick
 \item unreduzierte RGBA-Farben\end{itemize}
 $\Rightarrow$beliebige (auch Teil-)Transparenz möglich. In jedem Fall verlustfreie Kompression nachgeschaltet.\\
 $\Rightarrow$für photorealistische Darstellungen of deutlich größeres Dateivolumen als bei JPEG! Dafür evtl. JNG $\rightarrow$ keine große Verbreitung.
+
+\section{Vektorgrafikformate}
+\subsection{SVG}
+Das Scalable Vector Graphics Format gibt es seit deren Einführung im Jahre 1998. Dabei gab es zwei unterschiedliche Vorschläge für das Vektorgrafikformat:
+\begin{itemize}
+\item VML (Vector Markup Language) von Microsoft
+\item PGML (Precision Graphics Markup Language) von Adobe, IBM, NS/Netscape, Sun
+\end{itemize}
+\subsubsection{Historie}
+10/1998: Entwurf für Anforderungen an VektorGrafikformat SVG\\
+09/2001: SVG 1.0 als W3C-Standard\\
+01/2003: SVG 1.1 mit errata, modularization\\
+04/2005: SVG 1.2 verschiedene Profile ("tiny", "full", "basic"). Bis auf "tiny" wieder zurückgegangen\\
+derzeit Arbeit an SVG2 ...\\
+\\
+SVG ist XML-basiert und benutzt als übliche File-Extension ".svg".\\
+MIME-Type: image/svg+xml\\
+\subsubsection{SVG Viewer}
+früher: Adobe SVG Viewer\\
+heute: native Unterstützung in allen gängigen Browsern (Mozilla Firefox, Google Chrome, Apple Safari, Opera Browser, Microsoft Internet Explorer)
+\subsubsection{SVG Editor}
+Texteditor\\
+XML-Editor\\
+Inkscape\\
+\begin{lstlisting}[caption={Grundgerüst einer SVG-Datei}, label={lst:Grundger:SVG}, language={XML}]
+  <?xml version="1.0" [encoding="UTF-8"]?>
+  <!DOCTYPE 
+      svg <!--root-Tag-->
+      PUBLIC <!--entspr. standardisierte Sprache-->
+      "-//W3C//DTD SVG 1.1//EN" <!--Public Identifier-->
+      "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" <!--System-Identifier-->
+  >
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      [xmlns:xlink="http://www.w3.org/1999/xlink"]
+      width="breite" height="hoehe" [viewBox="xlo ylo kbreite khoehe"]
+  >
+    <title>Name der Grafik</title>
+    <desc>Beschreibung als Text</desc>
+    <defs>
+      <!--Platz fuer CSS-Definition, Javascript-Code, Definitionen von graph Objekten, welche zunaechst nicht angezeigt werden-->
+    </defs>
+    <!--eigentlicher Inhalt in Form von graph. Grundformen und unter Benutzung von komplexen (auch ind <defs> definierten) graph. Objekten-->
+\end{lstlisting}
+breite, hoehe: dimensionsbehaftete Angabe (z.b. 30mm, 500px) dimmensionslose Angabe äquivalent zu Pixel 3000\^=3000px\\
+$\Rightarrow$durch breite und hoehe wird auch das Koordinatensystem aufgespannt...
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.3]{svg-width-height.png}
+  \caption{implizites Koordinatensystem in SVG durch Breiten- bzw. Höhenangaben}
+\end{figure}\\
+...wenn nicht auch das Attribut viewBox verwendet wird: viewBox="xlo ylo kbreite khoehe"
+\subsubsection{Grafische Grundformen}
+Tags mit Attributen für Koordinaten und/oder Größe
+\begin{lstlisting}[caption={Syntax von grafischen Grundformen in SVG}, label={lst:Grundger:SVG}, language={SVG}]
+  <line x1="..." y1="..." x2="..." y2="..." />
+  <!--Linie von Punkt(x1,y1) zu Punkt(x2,y2)-->
+  
+  <circle cx="..." cy="..." r="..." />
+  <!--Kreis mit Mittelpunkt(cx,cy) und Radius r-->
+  
+  <rect x="..." y="..." width="..." height="..." />
+  <!--lotrechtes Rechteck mit Eckpunkt(x,y), Breite width und Hoehe height-->
+  
+  <ellipse cx="..." cy="..." rx="..." ry="..." />
+  <!--lotrechte Ellipse mit Mittelpunkt(cx,cy) und horizontalen bzw. vertikalen Radius rx bzw. ry-->
+  
+  <polyline points="x1 y1 x2 y2 x3 y3 ..." />
+  <!--Streckenzug, welcher die Punkte(x1,y1),(x2,y2),(x3,y3),... verbindet, deren Koordinaten als paarweise Werte in einem Attribut angegeben werden-->
+  <!--Koordinaten werden durch Leerzeichen und/oder Komma getrennt. Sinnvoll ist es jeweils aufeinanderfolgende x- und y-Koordinate desselben Punktes durch Komma und die Koordinaten des naechsten Punktes davon durch Leerzeichen zu trennen-->
+  
+  <polygon points="..." />
+  <!--geschlossener Streckenzug, bis der letzte Punkt wieder mit dem ersten verbunden wird-->
+\end{lstlisting}
+bislang fehlen uns "runde Kurven" bzw. "Kurvenzug"\\
+Voraussezung: Funktion stetig und Funktion stetig differenzierbar d.h. die erste Ableitung=Steigung muss ebenfalls stetig sein.\\
+Lösung: abschnittsweise Definition über (perse) stetig differenzierbare Funktionen; an den Schnittstelllen muss jeweils die Steigung der linken gleich der Steigung der rechten Kurve sein.\\
+$\Rightarrow$Kurveninterpolation\\
+bei SVG: Kurveninterpolation mittels "Bezierkurven"\\
+geometrische Herleitung von quadratischen Bezierkurven:
+quadr.Bez.-Kurve wird vollständig über drei Punkte definiert:
+\begin{itemize}
+\item Anfangspunkt (AP)
+\item Stützpunkt (SP)
+\item Endpunkt (EP)
+\end{itemize}
+Eigenschaften: Die Kurve beginnt im Anfangspunkt und endet im Endpunkt. Der Stützpunkt liegt im allgemeinen nicht auf der Kurve.\\
+Kurve hat im AP die Steigung der Geraden AP-SP und im EP die Steigung der Geraden SP-EP.

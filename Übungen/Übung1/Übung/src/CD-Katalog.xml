@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CD-Katalog.xsl"?>
+<!DOCTYPE cd-katalog [
+    <!ELEMENT cd-katalog (cd*)>
+    <!ELEMENT cd (interpret, Titel)>
+    <!ELEMENT interpret (#PCDATA)>
+    <!ELEMENT Titel (#PCDATA)>
+]>
+
+<cd-katalog>
+    <cd>
+        <interpret>James Blunt</interpret>
+        <Titel>Toller CD-Titel</Titel>
+    </cd>
+    <cd>
+        <interpret>Hannelore Pumpernickel </interpret>
+        <Titel>Alter geht die ab</Titel>
+    </cd>
+    <cd>
+        <interpret>Trollfest</interpret>
+        <Titel>Trinkentroll</Titel>
+    </cd>
+</cd-katalog>
+

@@ -27,3 +27,5 @@
 \contentsline {lstlisting}{\numberline {4.14}Beispiel f\IeC {\"u}r Variable in Template}{20}{lstlisting.4.14}
 \contentsline {lstlisting}{\numberline {4.15}xsl:attribute Syntax}{21}{lstlisting.4.15}
 \addvspace {10\p@ }
+\contentsline {lstlisting}{\numberline {5.1}Grundger\IeC {\"u}st einer SVG-Datei}{26}{lstlisting.5.1}
+\contentsline {lstlisting}{\numberline {5.2}Syntax von grafischen Grundformen in SVG}{27}{lstlisting.5.2}
