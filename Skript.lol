@@ -29,3 +29,12 @@
 \addvspace {10\p@ }
 \contentsline {lstlisting}{\numberline {5.1}Grundger\IeC {\"u}st einer SVG-Datei}{26}{lstlisting.5.1}
 \contentsline {lstlisting}{\numberline {5.2}Syntax von grafischen Grundformen in SVG}{27}{lstlisting.5.2}
+\contentsline {lstlisting}{\numberline {5.3}Path-Tag}{28}{lstlisting.5.3}
+\contentsline {lstlisting}{\numberline {5.4}Beispiel f\IeC {\"u}r "M" im Path-Tag}{28}{lstlisting.5.4}
+\contentsline {lstlisting}{\numberline {5.5}Beispiel f\IeC {\"u}r "L" im Path-Tag}{28}{lstlisting.5.5}
+\contentsline {lstlisting}{\numberline {5.6}Beispiel f\IeC {\"u}r "L" im Path-Tag}{29}{lstlisting.5.6}
+\contentsline {lstlisting}{\numberline {5.7}Beispiel zwei Dreiecke mit nur einem Path-Tag}{29}{lstlisting.5.7}
+\contentsline {lstlisting}{\numberline {5.8}Syntax des Text-Tag}{30}{lstlisting.5.8}
+\contentsline {lstlisting}{\numberline {5.9}Syntax des Text-Tag}{30}{lstlisting.5.9}
+\contentsline {lstlisting}{\numberline {5.10}Beispiel f\IeC {\"u}r ein tspan-Tag}{30}{lstlisting.5.10}
+\contentsline {lstlisting}{\numberline {5.11}Gruppierung von Inhalts-Tags bei SVG}{30}{lstlisting.5.11}

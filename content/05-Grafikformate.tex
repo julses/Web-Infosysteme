@@ -63,7 +63,7 @@ Joint Photographic Expert Group verwendet das RGB-Farbmodell oder (alternativ) C
 \item[e)] weiter bis 1x1 Pixel-Block erreicht
 \end{itemize}
 DCT sorgt für denselben Informationsgehalt bei gleicher Datenmenge (keine Kompression!)\\
-"Qualitätseinstellung" durch Zusammenfassen von Koeffizienten mit ähnlichen Werten auf den gleichen Wert $\Rightarrow$ Informationsverlust, hilft der Effizienz des nachfolgenden Huffman
+„Qualitätseinstellung“ durch Zusammenfassen von Koeffizienten mit ähnlichen Werten auf den gleichen Wert $\Rightarrow$ Informationsverlust, hilft der Effizienz des nachfolgenden Huffman
 
 \paragraph{Huffman-Codierung: verlustfrei}abhängig von der Häufigkeit ihres Vorkommens werden die zu kodierenden Werte mit kürzeren oder längeren Codewerten dargestellt $\Rightarrow$ variabel lange Codeworte für die Werte!\\
 Prinzip: Binärbaum\\
@@ -72,13 +72,13 @@ Beispiel:
 \begin{tabular}{rcl}
 0 & $\Rightarrow$ & fertig \\
 1  & $\Rightarrow$ & kommt noch was\\
-"0"  & $\Rightarrow$ & für häufigsten Wert\\
-"10"  & $\Rightarrow$ & für zweithäufogsten Wert\\
-"110" & $\Rightarrow$ & für dritthäufigsten Wert\\
-bis zu "11... 10" (255 Einsen) & $\Rightarrow$ & für seltensten Werte
+„0“  & $\Rightarrow$ & für häufigsten Wert\\
+„10“  & $\Rightarrow$ & für zweithäufigsten Wert\\
+„110“ & $\Rightarrow$ & für dritthäufigsten Wert\\
+bis zu „11... 10“ (255 Einsen) & $\Rightarrow$ & für seltensten Werte
 \end{tabular}
 \end{table}\\
-$\Rightarrow$funktioniert ganz gut bei DCT-Koeffizienten ("Abweichungswerten"), da die Abweichungen häufig kleine Werte darstellen $\Rightarrow$ kurze Codelänge für diese kleinen Werte\\
+$\Rightarrow$funktioniert ganz gut bei DCT-Koeffizienten („Abweichungswerten“), da die Abweichungen häufig kleine Werte darstellen $\Rightarrow$ kurze Codelänge für diese kleinen Werte\\
 $\Rightarrow$verlustfreie Komprimierung!
 
 \subsubsection{Nachfolgeformat: JPEG2000}
@@ -104,18 +104,23 @@ Das Scalable Vector Graphics Format gibt es seit deren Einführung im Jahre 1998
 \item VML (Vector Markup Language) von Microsoft
 \item PGML (Precision Graphics Markup Language) von Adobe, IBM, NS/Netscape, Sun
 \end{itemize}
+
 \subsubsection{Historie}
 10/1998: Entwurf für Anforderungen an VektorGrafikformat SVG\\
 09/2001: SVG 1.0 als W3C-Standard\\
 01/2003: SVG 1.1 mit errata, modularization\\
-04/2005: SVG 1.2 verschiedene Profile ("tiny", "full", "basic"). Bis auf "tiny" wieder zurückgegangen\\
+04/2005: SVG 1.2 verschiedene Profile („tiny“, „full“, „basic“). Bis auf „tiny“ wieder zurückgegangen\\
 derzeit Arbeit an SVG2 ...\\
 \\
-SVG ist XML-basiert und benutzt als übliche File-Extension ".svg".\\
+SVG ist XML-basiert und benutzt als übliche File-Extension „.svg“.\\
 MIME-Type: image/svg+xml\\
+
 \subsubsection{SVG Viewer}
-früher: Adobe SVG Viewer\\
-heute: native Unterstützung in allen gängigen Browsern (Mozilla Firefox, Google Chrome, Apple Safari, Opera Browser, Microsoft Internet Explorer)
+\begin{tabularx}{\textwidth}{lX}
+früher: & Adobe SVG Viewer\\
+heute: & native Unterstützung in allen gängigen Browsern (Mozilla Firefox, Google Chrome, Apple Safari, Opera Browser, Microsoft Internet Explorer)
+\end{tabularx}
+
 \subsubsection{SVG Editor}
 Texteditor\\
 XML-Editor\\
@@ -147,7 +152,8 @@ $\Rightarrow$durch breite und hoehe wird auch das Koordinatensystem aufgespannt.
   \includegraphics[scale=0.3]{svg-width-height.png}
   \caption{implizites Koordinatensystem in SVG durch Breiten- bzw. Höhenangaben}
 \end{figure}\\
-...wenn nicht auch das Attribut viewBox verwendet wird: viewBox="xlo ylo kbreite khoehe"
+...wenn nicht auch das Attribut viewBox verwendet wird: viewBox=„xlo ylo kbreite khoehe“
+
 \subsubsection{Grafische Grundformen}
 Tags mit Attributen für Koordinaten und/oder Größe
 \begin{lstlisting}[caption={Syntax von grafischen Grundformen in SVG}, label={lst:Grundger:SVG}, language={SVG}]
@@ -170,11 +176,14 @@ Tags mit Attributen für Koordinaten und/oder Größe
   <polygon points="..." />
   <!--geschlossener Streckenzug, bis der letzte Punkt wieder mit dem ersten verbunden wird-->
 \end{lstlisting}
-bislang fehlen uns "runde Kurven" bzw. "Kurvenzug"\\
+bislang fehlen uns „runde Kurven“ bzw. „Kurvenzug“\\
 Voraussezung: Funktion stetig und Funktion stetig differenzierbar d.h. die erste Ableitung=Steigung muss ebenfalls stetig sein.\\
 Lösung: abschnittsweise Definition über (perse) stetig differenzierbare Funktionen; an den Schnittstelllen muss jeweils die Steigung der linken gleich der Steigung der rechten Kurve sein.\\
 $\Rightarrow$Kurveninterpolation\\
-bei SVG: Kurveninterpolation mittels "Bezierkurven"\\
+bei SVG: Kurveninterpolation mittels „Bezierkurven“\\
+
+\subsubsection{Bezierkurven}
+\paragraph{quadratische Bezierkurve}
 geometrische Herleitung von quadratischen Bezierkurven:
 quadr.Bez.-Kurve wird vollständig über drei Punkte definiert:
 \begin{itemize}
@@ -182,5 +191,114 @@ quadr.Bez.-Kurve wird vollständig über drei Punkte definiert:
 \item Stützpunkt (SP)
 \item Endpunkt (EP)
 \end{itemize}
-Eigenschaften: Die Kurve beginnt im Anfangspunkt und endet im Endpunkt. Der Stützpunkt liegt im allgemeinen nicht auf der Kurve.\\
+\textbf{Eigenschaften:} Die Kurve beginnt im Anfangspunkt und endet im Endpunkt. Der Stützpunkt liegt im allgemeinen nicht auf der Kurve.\\
 Kurve hat im AP die Steigung der Geraden AP-SP und im EP die Steigung der Geraden SP-EP.
+\paragraph{kubische Bezierkurve}
+AP-SP1-SP2-EP\\
+beginnt in AP und endet in EP, Steigung in AP \^= Steigung AP-SP1, Steigung in EP \^= Steigung SP2-EP.\\
+\paragraph{De-Casteljau-Algorithmus}
+allgemeiner Tag zum Zeichnen von u.a. auch Bezier-Kurven:
+\begin{lstlisting}[caption={Path-Tag}, label={lst:path-Tag}, language={SVG}]
+  <path d="...." />
+\end{lstlisting}
+Das d- (wie „data“)-Attribut enthält eine Art „Zeichenbefehle“, mit denen das Ergebnis des path-Tags spezifiziert wird, sowie die entsprechenden (Punkt-)Koordinaten.\\
+\\
+\textbf{Zeichenbefehle:} 1Buchstaben, gefolgt von den zugehörigen Koordinaten\\
+$\rightarrow$Großbuchstaben: absolute Koordinaten\\
+$\rightarrow$Kleinbuchstaben: relative Koordinaten, d.h. relativ zur aktuellen (letzten) Position\\
+$\Rightarrow$Wir bewegen uns während des Abarbeitens des path-Tags über die Darstellungsfläche.\\
+$\Rightarrow$zu Beginn des path-Tags befinden wir uns um Ursprung (bei (0,0)).\\
+„M“ („More“)$\Rightarrow$bewegt den Zeichenstift, ohne etwas zu zeichnen\\
+\begin{lstlisting}[caption={Beispiel für "M" im Path-Tag}, label={lst:BSP:M-path-Tag}, language={SVG}]
+  <path d="M10,50 m30,-20" />
+\end{lstlisting}
+Im Beispiel aus Listing\vref{lst:BSP:M-path-Tag} ändert sich die Position zu (40,30), ohne etwas zu zeichnen.\\
+„L“ („Line“)$\Rightarrow$zeichnet eine Strecke vom aktuellen zum neuen Punkt
+\begin{lstlisting}[caption={Beispiel für "L" im Path-Tag}, label={lst:BSP:L-path-Tag}, language={SVG}]
+  <path d="M10,50 m30,-20 L70,20 m10,10 l-20,-50" />
+\end{lstlisting}
+Das Baispiellisting\vref{lst:BSP:L-path-Tag} zeichnet eine Strecke (40,30)-(70,20) und eine Strecke (80,30)-(60,-20)\\
+\\
+\begin{tabularx}{\textwidth}{lcX}
+$M x1 y1$ & $\Rightarrow$ & $x_{a}=x1, y_{a}=y1$\\
+$m dx dy$ & $\Rightarrow$ & $x_{a}=x_{a}+dx, y_{a}=y_{a}+dy$\\
+$L x1 y1$ & $\Rightarrow$ & zeichnet Strecke von $(x_{a},y_{a})$ zu (x1,y1) und verändert $x_{a}=x1, y_{a}=y1$\\
+$l dx dy$ & $\Rightarrow$ & zeichnet Strecke von $x_{a},y_{a}$ nach $(x_{a}+dx, y_{a}+dy)$ und verändert $x_{a}=x_{a}+dx,y_{a}=y_{a}+dy$\\
+$H x1$ & $\Rightarrow$ & zeichnet horizontale Strecke von $(x_{a},y_{a}$ nach $(x1,y_{a})$ und verändert $x_{a}=x1,y_{a}=y_{a}$
+h dx $\Rightarrow$Strecke von $(x_{a},y_{a})-(x_{a}+dx,y_{a})$ und $x_{a}=x_{a}+dx,y_{a}=y_{a}$\\
+$V y1 \vee$ v dy & $\Rightarrow$ & zeichnet eine vertikale Strecke entsprechend\\
+\end{tabularx}
+\begin{lstlisting}[caption={Beispiel für "L" im Path-Tag}, label={lst:BSP:L-path-Tag}, language={SVG}]
+  <polyline points="30,20 50,10 70,70" />
+  <path d="M30,20 L50,10 L70,70" />
+  <!--oder-->
+  <path d="M30,20 l20,-10 l20,60" />
+\end{lstlisting}
+\begin{tabularx}{\textwidth}{llX}
+Q sx,sy ex,ey & $\Rightarrow$ & quadratische B-K mit AP$(x_{a},y_{a})$, SP$(sx,sy)$, EP$(ex,ey)$\\
+q sdx,sdy edx,edy & $\Rightarrow$ & quadratische B-K mit AP$(x_{a},y_{a})$, SP$(x_{a}+sdx,y_{a}+sdy)$, EP$(x_{a}+edx,y_{a}+edy)$\\
+\multicolumn{3}{l}{Achtung:}„Während“ der Abarbeitung des einzelnen Befehls bleibt $(x_{a},y_{a})$ auf dem Anfangspunkt.\\
+(s1x,s1y s2x,s2y ex,ey) & $\Rightarrow$ & kubische B-K mit AP$(x_{a},y_{a})$, SP1$(s1x,s1y)$, SP2$(s2x,s2y)$, EP$(ex,ey)$\\
+c s1dx,s1dy s2dx,s2dy ex,ey & $\Rightarrow$ & kubische Bezier-Kurve entsprechend mit relativen Koordinaten\\
+T ex,ey & $\Rightarrow$ & quadratische Bezier-Kurve mit von der vorherigen B-K an AP gespiegelten SP\\
+S s2x,s2y ex,ey & $\Rightarrow$ & kubische B-K mit von der vorigen kubischen B-K an AP zu SP1 gespiegelten SP2\\
+\end{tabularx}
+\\
+$\Rightarrow$sinnvoll (nur) bei voriger quadr. bzw. kubischer Bezier-Kurve\\
+falls nicht$\Rightarrow$SVG-Spezifikation gibt an, wie der zu spiegelnde Punkt zu bestimmen ist\\
+\\
+\begin{tabularx}{\textwidth}{lX}
+A,a:„elliptical arc“ & $\Rightarrow$zeichnet Ausschnitt aus Ellipsen\\
+ & $\Rightarrow$relativ schwer zu verwenden (Parameter selbst nachlesen!)\\
+Z,z: & schließt den aktuellen Streckenzug mit einer Strecke zum entsprechenden ersten Punkt (nach dem letzten M-Befehl)
+\end{tabularx}
+\begin{lstlisting}[caption={Beispiel zwei Dreiecke mit nur einem Path-Tag}, label={lst:BSP:L-path-Tag}, language={SVG}]
+  <path d="M10,10 L20,10 L15,20 Z M60,30 L70,40 L50,60 Z" />
+  <!-- Z=zurueck zu Anfangspunkt -->
+\end{lstlisting}
+
+\subsubsection{Text}
+\begin{lstlisting}[caption={Syntax des Text-Tag}, label={lst:text-Tag}, language={SVG}]
+  <text x="x" y="y">Text der dargestellt wird</text>
+\end{lstlisting}
+$\Rightarrow$erstellt einen einzeiligen Text, beginnend an der Position (x,y)\\
+$\Rightarrow$Zeichenumbrüche sind zunächst nicht möglich\\
+aber: innerhalb <text> kann der Text mit <tspan> logisch unterteilt werden
+\begin{lstlisting}[caption={Syntax des Text-Tag}, label={lst:Syntax des tspan-Tag}, language={SVG}]
+  <tspan[x="x" y="y"]>Text, welcher an einer Position (durch die optionalen Attribute x und y gegeben) beginnen kann</tspan>
+  <tspan [dx="dx" dy="dy"]>Text,welcher an einer Position mit Versatz (dx,dy) zur letzten Position gesetzt wird<\tspan>
+\end{lstlisting}
+$\Rightarrow$mehrzeiliger Text mit etwas Aufwand und ungewohnt, aber machbar\\
+\begin{lstlisting}[caption={Beispiel für ein tspan-Tag}, label={lst:text-Tag}, language={SVG}]
+  <text x="0" y="0">
+    <tspan>eins</tspan>
+    <tspan x="0" dy="10">anderthalb</tspan>
+    <tspan x="0" dy="10">zwei</tspan>
+    <tspan x="0" dy="10">drei</tspan>
+  </text>
+\end{lstlisting}
+Universalattribute:\\
+style: für CSS-Deklarationen (wie bei HTML, allerdings größtenteils andere Properties)\\
+\begin{lstlisting}[caption={Gruppierung von Inhalts-Tags bei SVG}, label={lst:text-Tag}, language={SVG}]
+  <g><!-- beliebige andere Tags fuer grafische Grundelemente, Text, fuer weitere Gruppen -->
+\end{lstlisting}
+
+\subsubsection{CSS-Properties für SVG}
+stroke: Strichfarbe $\Rightarrow$ z.b. „line \{stroke: red;\}“\\
+stroke: \#ABCDEF;\\
+stroke: \#AFE; \^= \#AAFFEE\\
+stroke: rgb(0,200,0);\\
+\\
+opacity: 0.5; („Deckkraft“)\\
+0: voll-transparent\\
+1: voll-deckend/intransparent\\
+\\
+fill: Füllfarbe\\
+\\
+opacity bestimmt die Deckkraft gleichermaßen für Strich und Füllung, getrennt mögich über\\
+stroke-opacity:1.0;\\
+fill-opacity:0.2;\\
+\\
+stroke-width: Strichdicke\\
+strocke-width:2px;\\
+$\Rightarrow$Strichdicke von 2„Pixeln“=Einheiten im User Coordinate System
