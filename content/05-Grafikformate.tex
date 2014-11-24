@@ -277,7 +277,7 @@ $\Rightarrow$mehrzeiliger Text mit etwas Aufwand und ungewohnt, aber machbar\\
     <tspan x="0" dy="10">drei</tspan>
   </text>
 \end{lstlisting}
-Universalattribute:\\
+\subsubsection{Universalattribute}
 style: für CSS-Deklarationen (wie bei HTML, allerdings größtenteils andere Properties)\\
 \begin{lstlisting}[caption={Gruppierung von Inhalts-Tags bei SVG}, label={lst:text-Tag}, language={SVG}]
   <g><!-- beliebige andere Tags fuer grafische Grundelemente, Text, fuer weitere Gruppen -->
@@ -302,3 +302,175 @@ fill-opacity:0.2;\\
 stroke-width: Strichdicke\\
 strocke-width:2px;\\
 $\Rightarrow$Strichdicke von 2„Pixeln“=Einheiten im User Coordinate System
+
+\subsubsection{Präsentationsattribute}
+style="stroke-width: 2px;" />\\
+stroke-width="2px"\\
+Präsentationsattribute haben niedrigere Priorität als CSS-Angaben! (IMHO ein Design-Bug!)
+
+\subsubsection{transform}
+für affine Abbildungen der entsprechenden Objekte
+\begin{itemize}
+\item Drehung
+\item Skalierung
+\item Verschiebung
+\item ...
+\end{itemize}
+\paragraph{Verschiebung}\hspace{1mm}
+\begin{lstlisting}[caption={Verschiebung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  transform="translate(dx [dy])"    
+\end{lstlisting}
+z.B. translate(10 -3)\\
+falls dy fehlt, dy=0 (also horizontale Verschiebung)  
+
+\paragraph{Skalierung}\hspace{1mm}
+\begin{lstlisting}[caption={Skalierung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  transform="scale(sx [sy]"
+\end{lstlisting}
+falls sy fehlt, sy=sx (also maßstabsgetreue Skalierung)
+
+\paragraph{Drehung}\hspace{1mm}
+\begin{lstlisting}[caption={Drehung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  transform="rotate(winkel [cx cy])"
+  //winkel in Altgrad (360 Grad = Umdrehung)
+  //falls cx,cy fehlt dann gilt: cx=cy=0
+\end{lstlisting}
+Winkel in Altgrad (360 Grad = Umdrehung)\\
+falls cx,cy fehlt dann gilt: cx=cy=0
+
+\paragraph{Scherung „Schrägstellung“}\hspace{1mm}
+\begin{lstlisting}[caption={Scherung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  transform="skewX(winkel)"
+  //oder
+  transform="skewY(winkel)"
+\end{lstlisting}
+
+\paragraph{Anwendung mehrerer affiner Abbildungen nacheinander}\hspace{1mm}
+\begin{lstlisting}[caption={Scherung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  <g transform="translate(20 10)
+                scale(2)
+                translate(-20 -10)">
+            .......
+  </g>
+\end{lstlisting}
+\begin{itemize}
+\item[$\Rightarrow$]bewirkt zuerst eine Verschiebung um (-20,-10), dann eine Skalierung mit 2 und zuletzt eine Verschiebung um (20,10)
+\item[$\Rightarrow$]zuerst auszuführende affine Abbildung wird als letztes notiert
+\end{itemize}
+
+\paragraph{weitere (universale) affine Abbildung}
+Matrix\\
+\[
+\left( {\begin{array}{c}
+xneu \\
+yneu \\
+1
+\end{array} } \right)
+=
+\left( {\begin{array}{ccc}
+a & c & e \\
+b & d & f \\
+0 & 0 & 1
+\end{array} } \right)
+*
+\left( {\begin{array}{c}
+xorig \\
+yorig \\
+1
+\end{array} } \right)
+=
+\left( {\begin{array}{c}
+a*xorig + cyorig + e \\
+b*xorig + d*yorig + f \\
+0*xorig + 0*yorig + 1
+\end{array} } \right)
+=
+\left( {\begin{array}{c}
+xorig + dx \\
+yorig + dy\\
+1
+\end{array} } \right)
+\] 
+z.B. translate (dx dy)
+\[
+\left( {\begin{array}{ccc}
+1 & 0 & dx \\
+0 & 1 & dy \\
+0 & 0 & 1
+\end{array} } \right)
+\] 
+Syntax in SVG:\\
+transform="matrix(a b c d e f)"\\
+Wir können also statt "translate(dx dy)" auch schreiben: matrix(1 0 0 1 dx dy)\\
+scale(sx sy) \^= matrix(sx 0 0 sy 0 0)
+\[
+\left( {\begin{array}{ccc}
+sx & 0 & 0 \\
+0 & sy & 0 \\
+0 & 0 & 1
+\end{array} } \right)
+\]
+Skalierung:
+\[
+\left( {\begin{array}{c}
+sx*xorig \\
+sy*yorig \\
+1
+\end{array} } \right)
+\] 
+ebenso existieruen Matrizen für alle affinen Abbildungen sowie die Konkatenation von mehreren (beliebig vielen) affinen Abbildungen
+\[
+\left( {\begin{array}{c}
+xneu \\
+yneu \\
+1
+\end{array} } \right)
+=
+\left( {\begin{array}{ccc}
+1 & 0 & 20 \\
+0 & 1 & 10 \\
+0 & 0 & 1
+\end{array} } \right)
+*
+\left( {\begin{array}{ccc}
+2 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 1
+\end{array} } \right)
+*
+\left( {\begin{array}{ccc}
+1 & 0 & -20 \\
+0 & 1 & -10 \\
+0 & 0 & 1
+\end{array} } \right)
+*
+\left( {\begin{array}{c}
+xorig \\
+yorig \\
+1
+\end{array} } \right)
+\] 
+\[
+\left( {\begin{array}{ccc}
+ &  &  \\
+ &  &  \\
+ &  & 
+\end{array} } \right)
+*
+\left( {\begin{array}{c}
+xorig \\
+yorig \\
+1
+\end{array} } \right)
+\]
+weiteres „grafisches“ Objekt:
+\begin{lstlisting}[caption={Scherung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  <use xlink:href="hashtagkackZeichen anderes Objekt" [x="..." y="..."]/>
+\end{lstlisting}
+x,y: optionale Parameter zur Positionierung (Verschiebung) des verwendeten Objekts\\
+verweist auf Objekt
+\begin{lstlisting}[caption={Scherung mit der transform Syntax}, label={lst:text-Tag}, language={SVG}]
+  <g id="anderes Objekt">
+     .....
+  </g>
+\end{lstlisting}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+    svg <!--root-Tag-->
+    PUBLIC <!--entspr. standardisierte Sprache-->
+    "-//W3C//DTD SVG 1.1//EN" <!--Public Identifier-->
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" <!--System-Identifier-->
+>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="400px" height="300"
+>
+<title>Name der Grafik</title>
+<desc>Beschreibung als Text</desc>
+<defs>
+<!--Platz fuer CSS-Definition, Javascript-Code, Definitionen von graph Objekten, welche zunaechst nicht angezeigt werden-->
+</defs>
+<rect x="..." y="..." width="70" height="50" />
+<!--eigentlicher Inhalt in Form von graph. Grundformen und unter Benutzung von komplexen (auch ind <defs> definierten) graph. Objekten-->

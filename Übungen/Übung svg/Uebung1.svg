@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+    svg
+    PUBLIC
+    "-//W3C//DTD SVG 1.1//EN"
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="300">
+  <title>Rechteck</title>
+  <desc>Rechteck in Form einer ...</desc>
+  <defs>
+
+  </defs>
+
+  <rect x="5" y="5" width="300" height="250" rx="10" ry="10" style="fill:red;stroke:black" />
+
+  <path
+    id="linie"
+	d="M100,100 L120,100 L130,110 L140,100 L150,110"
+	stroke-width="5"
+	stroke-linejoin="round"
+	stroke="black"
+	fill="white"
+  />
+
+  <circle cx="50" cy="50" r="20" fill="green"/>
+  
+  <ellipse cx="50" cy="50" rx="30" ry="15" fill="yellow" />
+  
+  <use xlink:href="#linie" x="100" y="150" />
+</svg>

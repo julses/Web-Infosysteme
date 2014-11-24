@@ -38,3 +38,10 @@
 \contentsline {lstlisting}{\numberline {5.9}Syntax des Text-Tag}{30}{lstlisting.5.9}
 \contentsline {lstlisting}{\numberline {5.10}Beispiel f\IeC {\"u}r ein tspan-Tag}{30}{lstlisting.5.10}
 \contentsline {lstlisting}{\numberline {5.11}Gruppierung von Inhalts-Tags bei SVG}{30}{lstlisting.5.11}
+\contentsline {lstlisting}{\numberline {5.12}Verschiebung mit der transform Syntax}{31}{lstlisting.5.12}
+\contentsline {lstlisting}{\numberline {5.13}Skalierung mit der transform Syntax}{32}{lstlisting.5.13}
+\contentsline {lstlisting}{\numberline {5.14}Drehung mit der transform Syntax}{32}{lstlisting.5.14}
+\contentsline {lstlisting}{\numberline {5.15}Scherung mit der transform Syntax}{32}{lstlisting.5.15}
+\contentsline {lstlisting}{\numberline {5.16}Scherung mit der transform Syntax}{32}{lstlisting.5.16}
+\contentsline {lstlisting}{\numberline {5.17}Scherung mit der transform Syntax}{33}{lstlisting.5.17}
+\contentsline {lstlisting}{\numberline {5.18}Scherung mit der transform Syntax}{34}{lstlisting.5.18}
