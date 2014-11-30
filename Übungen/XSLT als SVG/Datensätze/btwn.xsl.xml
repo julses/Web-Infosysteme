@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/2000/svg">
+        <xsl:output method="xml" doctype-system="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" doctype-public="-//W3C//DTD SVG 1.0//EN" encoding="UTF-8"/>
+        <xsl:template match="/wahlergebnis">
+                <svg height="600" xmlns="http://www.w3.org/2000/svg" version="1.0">
+			<xsl:attribute name="width"><xsl:value-of select="100+100*count(ergebnis)"/></xsl:attribute>
+		<text x="100" y="570" style="font-weight: bold; font-size: 110%;">
+			<xsl:value-of select="beschreibung"/>
+am
+			<xsl:value-of select="datum"/>
+		</text>
+		<xsl:apply-templates select="ergebnis">
+			<xsl:sort select="partei='Sonstige'" order="ascending"/>
+			<xsl:sort select="prozent" data-type="number" order="descending"/>
+		</xsl:apply-templates>
+		</svg>
+	</xsl:template>
+	<xsl:template match="ergebnis">
+                <text text-anchor="middle" x="25" y="520">
+                	<xsl:attribute name="transform">translate(<xsl:value-of select="100*position()"/>)</xsl:attribute>
+                        <xsl:value-of select="partei"/>
+                </text>
+		<text text-anchor="end" x="50" y="540">
+			<xsl:attribute name="transform">translate(<xsl:value-of select="100*position()"/>)</xsl:attribute>
+			<xsl:value-of select="prozent"/>%
+		</text>
+		<rect width="50" x="0" y="-500">
+			<xsl:attribute name="transform">scale(1 -1) translate(<xsl:value-of select="100*position()"/>)</xsl:attribute>
+			<xsl:attribute name="height">
+				<xsl:value-of select="5*prozent"/>
+			</xsl:attribute>
+			<xsl:attribute name="style">fill:
+			<xsl:choose>
+			<xsl:when test="partei='CDU'">black;</xsl:when>
+			<xsl:when test="partei='CSU'">rgb(0,50,255);</xsl:when>
+			<xsl:when test="partei='SPD'">red;</xsl:when>
+			<xsl:when test="partei='Grüne'">green;</xsl:when>
+			<xsl:when test="partei='FDP'">yellow;</xsl:when>
+			<xsl:when test="partei='Die Linke'">rgb(200,0,150);</xsl:when>
+			<xsl:when test="partei='Piraten'">orange;</xsl:when>
+			<xsl:when test="partei='FW'">rgb(100,150,255);</xsl:when>
+			<xsl:when test="partei='NPD'">rgb(150,75,0);</xsl:when>
+			<xsl:when test="partei='Freie Wähler'">rgb(50,200,255);</xsl:when>
+			<xsl:when test="partei='AfD'">rgb(0,150,255);</xsl:when>
+			<xsl:otherwise>grey;</xsl:otherwise>
+			</xsl:choose>
+			</xsl:attribute>
+		</rect>
+	</xsl:template>
+</xsl:stylesheet>

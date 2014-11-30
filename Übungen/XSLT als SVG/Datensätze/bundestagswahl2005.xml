@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="bundestagswahl.xsl" type="text/xsl" ?>
+
+<wahlergebnis>
+<beschreibung>Ergebnis der Bundestagswahl 2005</beschreibung>
+<datum>18.09.2005</datum>
+<ergebnis><partei>SPD</partei><prozent>34.2</prozent></ergebnis>
+<ergebnis><partei>CDU</partei><prozent>27.8</prozent></ergebnis>
+<ergebnis><partei>CSU</partei><prozent>7.4</prozent></ergebnis>
+<ergebnis><partei>Grüne</partei><prozent>8.1</prozent></ergebnis>
+<ergebnis><partei>FDP</partei><prozent>9.8</prozent></ergebnis>
+<ergebnis><partei>Die Linke</partei><prozent>8.7</prozent></ergebnis>
+<ergebnis><partei>Sonstige</partei><prozent>3.9</prozent></ergebnis>
+</wahlergebnis>

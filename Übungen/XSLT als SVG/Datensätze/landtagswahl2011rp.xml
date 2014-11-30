@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<wahlergebnis>
+<beschreibung>Ergebnis der Landtagstagswahl 2011 in Rheinland-Pfalz</beschreibung>
+<datum>27.03.2011</datum>
+<ergebnis><partei>SPD</partei><prozent>35.7</prozent></ergebnis>
+<ergebnis><partei>CDU</partei><prozent>35.2</prozent></ergebnis>
+<ergebnis><partei>Grüne</partei><prozent>15.4</prozent></ergebnis>
+<ergebnis><partei>FDP</partei><prozent>4.2</prozent></ergebnis>
+<ergebnis><partei>Die Linke</partei><prozent>3.0</prozent></ergebnis>
+<ergebnis><partei>FW</partei><prozent>2.3</prozent></ergebnis>
+<ergebnis><partei>Piraten</partei><prozent>1.6</prozent></ergebnis>
+<ergebnis><partei>NPD</partei><prozent>1.1</prozent></ergebnis>
+<ergebnis><partei>Sonstige</partei><prozent>1.4</prozent></ergebnis>
+</wahlergebnis>

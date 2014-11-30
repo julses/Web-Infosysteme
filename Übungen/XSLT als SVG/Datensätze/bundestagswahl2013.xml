@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" ?>
+
+<wahlergebnis>
+
+<beschreibung>Ergebnis der Bundestagswahl 2013</beschreibung>
+<datum>22.09.2013</datum>
+
+<ergebnis><partei>CDU</partei><prozent>34.1</prozent></ergebnis>
+<ergebnis><partei>CSU</partei><prozent>7.4</prozent></ergebnis>
+<ergebnis><partei>SPD</partei><prozent>25.7</prozent></ergebnis>
+<ergebnis><partei>FDP</partei><prozent>4.8</prozent></ergebnis>
+<ergebnis><partei>Die Linke</partei><prozent>8.6</prozent></ergebnis>
+<ergebnis><partei>Grüne</partei><prozent>8.4</prozent></ergebnis>
+<ergebnis><partei>Piraten</partei><prozent>2.2</prozent></ergebnis>
+<ergebnis><partei>NPD</partei><prozent>1.3</prozent></ergebnis>
+<ergebnis><partei>AfD</partei><prozent>4.7</prozent></ergebnis>
+<ergebnis><partei>Freie Wähler</partei><prozent>1.0</prozent></ergebnis>
+<ergebnis><partei>Sonstige</partei><prozent>1.8</prozent></ergebnis>
+
+</wahlergebnis>
+

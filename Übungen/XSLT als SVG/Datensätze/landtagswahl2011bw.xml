@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<wahlergebnis>
+<beschreibung>Ergebnis der Landtagstagswahl 2011 in Baden-Württemberg</beschreibung>
+<datum>27.03.2011</datum>
+<ergebnis><partei>CDU</partei><prozent>39.0</prozent></ergebnis>
+<ergebnis><partei>Grüne</partei><prozent>24.2</prozent></ergebnis>
+<ergebnis><partei>SPD</partei><prozent>23.1</prozent></ergebnis>
+<ergebnis><partei>FDP</partei><prozent>5.3</prozent></ergebnis>
+<ergebnis><partei>Die Linke</partei><prozent>2.8</prozent></ergebnis>
+<ergebnis><partei>Piraten</partei><prozent>2.1</prozent></ergebnis>
+<ergebnis><partei>Sonstige</partei><prozent>3.5</prozent></ergebnis>
+</wahlergebnis>

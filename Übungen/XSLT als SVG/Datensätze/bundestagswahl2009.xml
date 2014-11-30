@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<wahlergebnis>
+<beschreibung>Ergebnis der Bundestagswahl 2009</beschreibung>
+<datum>27.09.2009</datum>
+<ergebnis><partei>CDU</partei><prozent>27.3</prozent></ergebnis>
+<ergebnis><partei>CSU</partei><prozent>6.5</prozent></ergebnis>
+<ergebnis><partei>SPD</partei><prozent>23.0</prozent></ergebnis>
+<ergebnis><partei>FDP</partei><prozent>14.6</prozent></ergebnis>
+<ergebnis><partei>Die Linke</partei><prozent>11.9</prozent></ergebnis>
+<ergebnis><partei>Grüne</partei><prozent>10.7</prozent></ergebnis>
+<ergebnis><partei>Piraten</partei><prozent>2.0</prozent></ergebnis>
+<ergebnis><partei>NPD</partei><prozent>1.5</prozent></ergebnis>
+<ergebnis><partei>Sonstige</partei><prozent>2.5</prozent></ergebnis>
+</wahlergebnis>
