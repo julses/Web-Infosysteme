@@ -46,3 +46,5 @@
 \contentsline {lstlisting}{\numberline {5.17}Scherung mit der transform Syntax}{33}{lstlisting.5.17}
 \contentsline {lstlisting}{\numberline {5.18}Scherung mit der transform Syntax}{34}{lstlisting.5.18}
 \addvspace {10\p@ }
+\contentsline {lstlisting}{\numberline {6.1}Metadaten am Bsp-HTML}{36}{lstlisting.6.1}
+\contentsline {lstlisting}{\numberline {6.2}Div. Inhalte von Name}{37}{lstlisting.6.2}

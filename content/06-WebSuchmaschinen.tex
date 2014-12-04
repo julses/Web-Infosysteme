@@ -32,3 +32,92 @@
   \end{itemize}
 \item[Anmerkung:] AltaVista war ein Demonstrator der Firma DEC für die Leistungsfähigkeit seiner Rechner
 \end{itemize}
+Bewertung:
+\begin{itemize}
+\item[+] gute Aktualität
+\item[+] kein manueller Aufwand
+\item[+] feingranulare Ergebnisse möglich (individuelle Seiten-URL statt kompletter Websiten-URL)
+\item[-] Rolle und Bedeutung der Suchbegriffe auf der Seite ist undefiniert.
+\item[-] Suchmaschinen- Spamming ist möglich
+\end{itemize}
+
+\paragraph{3. Metadaten-Suchmaschine}\hspace*{1mm}
+kein typischer Vertreter, sondern eingebaut in mehr oder weniger alle Web-Suchmaschinene seit Mitte der 199x-er Jahre.
+\begin{itemize}
+\item[$\Rightarrow$] "durchsucht" und "indiziert" werden die "Metadaten" einer Website.
+\end{itemize}
+\subparagraph{Einschub: Metadaten}
+"Daten über Daten", d.h. Informationen und Beschreibungen über andere Daten, welche nicht selbst Bestandteil der eigentlichen Daten sind. \\
+Sie sind beim Betrachten der eigentlichen Daten normalerweise unsichtbar.
+\begin{itemize}
+\item\underline{HTML:}<head>, und insbesondere <meta>-Tag
+\item\underline{MP3:}ID3-Tags ( Komponist, Titel, Artist,...)
+\item\underline{JPEG(und TIFF)} : EXIF, Aufnahmedatum, Kameramodell, Objektiv, Brennweite, mit/ohne Blitz, Ortsangaben/GPS...
+\item\underline{Dateisysteme:} Name, Größe, Änderungsdatum, Besitzer, Rechte,... von Dateien
+\end{itemize}
+\dots praktisch (fast) alle Dateiformate \dots \\
+AUSNAHMEN: Rohdaten,z.B. plain text, Folge von Audio Sampels, direkter Screen Dump,...\\
+Metaddaten am Beispiel HTML
+\begin{lstlisting}[caption={Metadaten am Bsp-HTML}, label={lst:metadatenHTML}, language={HTML}]
+  <meta name="Rolle/Eigenschaft/proberty " content="Wert/value " />
+\end{lstlisting}
+$\Rightarrow$ Metadaten bestehen aus Eigenschafts-/Wert-Paaren.\\
+ Zum Beispiel:\\
+ \begin{lstlisting}[caption={Div. Inhalte von Name}, label={lst:beispieleNAME}, language={HTML}]
+<meta name="author" content="J.W. von Goethe"/>
+<!--oder-->
+<meta name="auteur" content="J.W. von Goethe"/>(franzose)
+<!--oder-->
+<meta name="autor" content="J.W. von Goethe"/>(deutsch)
+<!--oder-->
+<meta name="Schriftsteller/ Verfasser" content="J.W. von Goethe"/>
+\end{lstlisting}
+$\Rightarrow$ Wer legt die Werte des name-Attributs (also die Rollenbezeichner) fest?\\
+$\Rightarrow$ zumindest der HTML-Standart tut dies \underline{nicht!}\\
+$\Rightarrow$ best-practice: z.B. author, keywords, description,, titel,\dots\\
+Problem: mangelnde Standardisierung und damit: Was versteht die Suchmaschine?\\
+Gewünscht: Standard für Rollenbezeichner\\
+Lösung: Dublin Core.\\
+$\Rightarrow$ Dublin Core Element Set(DCES), u.a. standardisiert als RFC 2413 (also auch ein IETF-defacto-Standart).\\
+$\Rightarrow$ breiter Einsatzbereich, aber insbesondere für Online-Zwecke.\\
+$\Rightarrow$ definiert (nur) die Rollen in 3 Kategorien.\\
+\newline
+\begin{tabularx}{\textwidth}{|X|X|X|}
+ \hline 
+ Content & Interlectual Proberty & Instantion \\ 
+ "Inhalt" & "Urheberschaft" & "Ausprägung" \\ 
+ \hline 
+ \hline
+ Titel= Titel des Werkes & Creator=geistiger Urheber des Werks & Date=Datum der Erschaffung oder Veröffentlichung \\ 
+ \hline 
+ Subject=Thema, oft in Form von Stichwörtern & Publisher= Veröffentlicher, Herrausgeber,Verlag & Format= technisches Format, z.B. MIME-Type \\ 
+ \hline 
+ Description= Beschreibung, Kurzfassung & Contributer=jemand, der etwas beiträgt, aber weniger als ein Creater & Identifier= eindeutiges Identifikationsmerkmal,z.B. URL, ISBN \\ 
+ \hline 
+ Type=Art der Ressurce(Roman,Gedicht,...) & Rights=Urheberrechte, Hinweiß auf Kontakt o.ä. & Language= Sprache des Dokuments oder der Übersetzung \\ 
+ \hline 
+ Source= andere Quelle, um die im vorliegenden Wekr wesentlich geht. &  &  \\ 
+ \hline 
+ Relation=Rolle, welche die( in Source) andere Quelle für das vorliegende Werk spielt. &  &  \\ 
+ \hline 
+ Coverage=zeitliche oder räumliche Abdeckung des Werkes &  &  \\ 
+ \hline 
+ \end{tabularx}  
+
+\subsection{Suchmaschinen- Spamming}
+Parallel zu der Entwicklungsliste\\
+\underline{Ziel} : (Eigene) Website soll bei allen möglichen (häufig nachgefragten) Suchbegriffen " möglichst weit oben" in den Suchergebnissen auftauchen. 
+Methoden:
+\begin{enumerate}
+\item Keyword Spamming: Die Begriffe, nach denen im Internet häufig gesucht wird, werden (möglichst unsichtbar oder unauffällig) auf der Website platziert.
+\paragraph{Unsichtbar?}
+\begin{itemize}
+\item kleine Schriftgröße
+\item Schriftfarbe und Hintergrundfarbe gleich.
+\item evtl. transperente Schrifft(Css3).
+\end{itemize}
+$\Rightarrow$ alles \textbf{CSS-Mehtoden} !\\
+Texte aus DOM(Document Objekt Model, Repräsentation von HTML/SVG-Seiten im Brwoser, welche per JavaSkript verändert werden kann.) entfernen $\Rightarrow$ \textbf{JavaSkript}
+
+\end{enumerate}
+
