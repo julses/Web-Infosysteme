@@ -74,7 +74,7 @@ $\Rightarrow$ Metadaten bestehen aus Eigenschafts-/Wert-Paaren.\\
 \end{lstlisting}
 $\Rightarrow$ Wer legt die Werte des name-Attributs (also die Rollenbezeichner) fest?\\
 $\Rightarrow$ zumindest der HTML-Standart tut dies \underline{nicht!}\\
-$\Rightarrow$ best-practice: z.B. author, keywords, description,, titel,\dots\\
+$\Rightarrow$ best-practice: z.B. author, keywords, description, titel,\dots\\
 Problem: mangelnde Standardisierung und damit: Was versteht die Suchmaschine?\\
 Gewünscht: Standard für Rollenbezeichner\\
 Lösung: Dublin Core.\\
@@ -88,36 +88,150 @@ $\Rightarrow$ definiert (nur) die Rollen in 3 Kategorien.\\
  "Inhalt" & "Urheberschaft" & "Ausprägung" \\ 
  \hline 
  \hline
- Titel= Titel des Werkes & Creator=geistiger Urheber des Werks & Date=Datum der Erschaffung oder Veröffentlichung \\ 
+ Titel = Titel des Werkes & Creator = geistiger Urheber des Werks & Date=Datum der Erschaffung oder Veröffentlichung \\ 
  \hline 
- Subject=Thema, oft in Form von Stichwörtern & Publisher= Veröffentlicher, Herrausgeber,Verlag & Format= technisches Format, z.B. MIME-Type \\ 
+ Subject = Thema, oft in Form von Stichwörtern & Publisher = Veröffentlicher, Herrausgeber,Verlag & Format = technisches Format, z.B. MIME-Type \\ 
  \hline 
- Description= Beschreibung, Kurzfassung & Contributer=jemand, der etwas beiträgt, aber weniger als ein Creater & Identifier= eindeutiges Identifikationsmerkmal,z.B. URL, ISBN \\ 
+ Description = Beschreibung, Kurzfassung & Contributer = jemand, der etwas beiträgt, aber weniger als ein Creater & Identifier = eindeutiges Identifikationsmerkmal,z.B. URL, ISBN \\ 
  \hline 
- Type=Art der Ressurce(Roman,Gedicht,...) & Rights=Urheberrechte, Hinweiß auf Kontakt o.ä. & Language= Sprache des Dokuments oder der Übersetzung \\ 
+ Type = Art der Ressurce(Roman,Gedicht,...) & Rights = Urheberrechte, Hinweiß auf Kontakt o.ä. & Language = Sprache des Dokuments oder der Übersetzung \\ 
  \hline 
- Source= andere Quelle, um die im vorliegenden Wekr wesentlich geht. &  &  \\ 
+ Source = andere Quelle, um die im vorliegenden Wekr wesentlich geht. &  &  \\ 
  \hline 
- Relation=Rolle, welche die( in Source) andere Quelle für das vorliegende Werk spielt. &  &  \\ 
+ Relation = Rolle, welche die( in Source) andere Quelle für das vorliegende Werk spielt. &  &  \\ 
  \hline 
- Coverage=zeitliche oder räumliche Abdeckung des Werkes &  &  \\ 
+ Coverage = zeitliche oder räumliche Abdeckung des Werkes &  &  \\ 
  \hline 
- \end{tabularx}  
+\end{tabularx}  
+DC spezifiziert \underline{nur} die Rollen (properties), nicht aber die Werte (values)! Aber für die Werte wäre auch eine Standardisierung sinnvoll.\\
+Bsp.: Format einer Datumsangabe:\\
+\begin{itemize}
+\item 08.Dezember2014
+\item Dec 08th,2014
+\item 08.12.2014
+\item 08.12.14
+\item 12.08.14
+\item 2014-12-08 (ISO)
+\end{itemize}
+zur Spezifikation im Meta-Tag:
+\begin{lstlisting}[caption={Div. Inhalte von Name}, label={lst:beispieleNAME}, language={HTML}]
+<meta name="DC.date" content="2014-12-08" scheme="YYYY-MM-DD"/>
+\end{lstlisting}
+Problem: Aussehen der scheme ist ebenfalls unstandardisiert (kann auch Name/Verweis auf ISO8601 sein)
 
-\subsection{Suchmaschinen- Spamming}
+\paragraph{Sprache durch Angabe im content-Attribut:} Englisch, Deutsch, Französisch, Arabisch, CHinesisch,\dots ?
+\begin{lstlisting}[caption={Div. Inhalte von Name}, label={lst:beispieleNAME}, language={HTML}]
+<meta name="DC.subject" lang="de-BY" content="Mia san mia."/>
+\end{lstlisting}
+
+\paragraph{anderes Bsp:}Liste von möglichen Schlüsselwörtern\\
+$\Rightarrow$"Verschlagwortung" in Bibliotheken mit Hilfe de ACM Computer Classification System
+
+\subsection{Suchmaschinen-Spamming}
 Parallel zu der Entwicklungsliste\\
 \underline{Ziel} : (Eigene) Website soll bei allen möglichen (häufig nachgefragten) Suchbegriffen " möglichst weit oben" in den Suchergebnissen auftauchen. 
 Methoden:
 \begin{enumerate}
 \item Keyword Spamming: Die Begriffe, nach denen im Internet häufig gesucht wird, werden (möglichst unsichtbar oder unauffällig) auf der Website platziert.
-\paragraph{Unsichtbar?}
-\begin{itemize}
-\item kleine Schriftgröße
-\item Schriftfarbe und Hintergrundfarbe gleich.
-\item evtl. transperente Schrifft(Css3).
-\end{itemize}
+ \paragraph{Unsichtbar?}
+ \begin{itemize}
+ \item kleine Schriftgröße
+ \item Schriftfarbe und Hintergrundfarbe gleich.
+ \item evtl. transperente Schrifft(Css3).
+ \end{itemize}
 $\Rightarrow$ alles \textbf{CSS-Mehtoden} !\\
 Texte aus DOM(Document Objekt Model, Repräsentation von HTML/SVG-Seiten im Brwoser, welche per JavaSkript verändert werden kann.) entfernen $\Rightarrow$ \textbf{JavaSkript}
-
 \end{enumerate}
 
+\vspace*{1cm}
+zurück zu Suchmaschinen:\\
+\textbf{3.Metadaten-Suchmaschinen}\\
+\textbf{Aufwand:} weniger "Volumen", also weniger Aufwand (meistens\dots) $\Rightarrow$für die Suchmaschine\\
+aber: Zusatzaufwand beim Erstellen der Seite ohne unmittelbar ersichtliches "Resultat"\\
+\textbf{Qualität:} klare Spezifikation der Rollen bedeutet: "Wichtigkeit" der Metadaten ist klar\\
+aber: Metadaten-Spamming ist noch leichter als Keyword-Spamming\\
+\textbf{PT SM-Spamming:}\\
+\textbf{2.Metadaten-Spamming}\\
+Angabe häufig gesuchter Texte und Begriffe in den Metadaten (welche nicht einmal versteckt werden müssen).\\
+Gerichtsurteil aus Deutschland: Namen der Produkte von Mitbewerbern in den Metadaten sind unzulässig!\\
+\\
+\textbf{4.Meta-Suchmaschine} (MetaCrawler1995, MetaGer1996)
+\begin{itemize}
+\item[$\Rightarrow$]Art "Web-Oberfläche" für andere Suchmaschinen
+\item[$\Rightarrow$]keine eigene Websuche, kein eigener Index,\dots
+\item[$\Rightarrow$]parallele Anfrage an mehrere Suchmaschinen gleichzeitig und mit nur einer Suchanfrage-Syntax möglich
+\item[$\Rightarrow$]evtl. Abgleich der verschiedenen Suchergebnisse durch die Meta-Suchmaschine möglich $\rightarrow$Mehrwert und Qualitätsgewinn möglich, sowie mögliches Ausfüllen von "Spam-Ergebnissen"
+\end{itemize}
+\vspace*{5mm}
+\textbf{5.Suchmaschine mit Bewertungsfunktion} (Google 1998)
+\begin{itemize}
+\item[$\Rightarrow$]Die Seiten, welche bei einem bestimmten Suchbegriff auftauchen, bekommen eine Bewertung entsprechend \underline{Relevanz} und werden dementsprechend sortiert aufgelistet
+\end{itemize}
+bei Google: PageRank als Relevanz-/Güte-Kriterium\\
+\(PR(i)=\frac{(1-d)}{n} + d*\sum \limits_{j}\frac{PR(j)}{c(j)}\)\\
+\begin{itemize}
+\item[i:] Seite, für welche der PR berechnet werden soll
+\item[j:] alle Seiten, welche auf i verweisen
+\item[c(j):] "count", Anzahl der Verlinkungen von j auf andere Seiten
+\item[d:] "dampling", Dämpfungsfaktor \(0 \le d \le 1\)
+\item[n:] Anzahl aller WebSeiten oder Websites im Netz $\Rightarrow$optional zur Normierung\\
+\(\sum \limits_{k}PR(k)=1\)
+\end{itemize}
+$\Rightarrow$PR lässt sich gut über die Analogie zur Vererbung beschreiben\\
+\textbf{Aufwand:} einiger maschineller Aufwand, da die PRs erst nach einigen Iterationen auf den jeweiligen PR konvergieren $\Rightarrow$maschinell bestimmbare "Seitengüte"\\
+\textbf{Qualität:} Deutliche Verbesserung, da nach Güte sortierte Ergebnisse\\
+aber: Es gibt speziell auf Google ausgerichtete Spamming-Methoden!\\
+\\
+PT: SM-Spam:\\
+\textbf{3.Link Farming:}\\
+Menge von WebSites, welche untereinander mit häufig gesuchtern Texten massiv verlinken und so gegenseitig den PR hochtreiben\\
+moderne Varianten: gekaufte Backlinks, Verweise auf eigene WebSite in Kommentaren fremder Blogs oder WebForen \dots\\
+$\Rightarrow$speziell auf Google zugeschnitten\\
+\\
+\textbf{4.Google Bombing:}\\
+Stichwort "miserable failure" $\Rightarrow$ "George W. Bush"\\
+Suchbegriffe werden bei Google auch mit den Linktext verknüpft, welcher auf die Seite zeigt $\Rightarrow$neben meinem PR kann auch ein Suchbegriff "vererbt" werden\\
+$\Rightarrow$"Fälschen" oder Beeinflussen anderer (finder) Seiten möglich\\
+\\
+\textbf{5.PageCloaking:}\\
+nicht speziell für Google \dots aber durch Google bekannt geworden $\Rightarrow$ BMW soll PageCloaking betrieben haben.\\
+Suchmaschine bekommt andere Suchinhalte als der "normale Nutzer" ausgeliefert. Erkennung z.B. anhand des "User Agent"\\
+Achtung: Übergang von "Responsive Design" zu PageCloaking ist fließend.
+"Gegenbegriff" zu SM-Spamming:\\
+SEO: Search Engine Optimization\\
+Ziel: wie bei Suchmaschinen-Spam, aber nur bei relevanten Suchbegriffen\\
+"Die guten machen SEO, die bösen machen SM-Spam!"\\
+Methoden:
+\begin{enumerate}
+\item syntaktisch und semantisch korrektes HTML
+\item gute Metadaten
+\item Wichtige Begriffe (auch) am Anfang der Seite unterbringen
+\item grundsätzliches Vermeiden aller Methoden, die als SM-Spamming interpretiert werden könnten
+\end{enumerate}
+
+\chapter{Klausurfragen von 2013?}
+\begin{enumerate}
+\item \begin{itemize}
+  \item[a)]Erläutern Sie die Worte Wohlgeformt und Gültig bei einem XML-Dokument\\
+  $\Rightarrow$Wohlgeformt: Nur ein Roottag, alle müssen geschlossen sein und dürfen nicht verschränkt sein (falsche Schachtelung)\\
+  $\Rightarrow$Gültig: muss konkreter Grammatik entsprechen, Entsprechend zu DTD (welche Tags, Attribute, Attributwerte,\dots sind erlaubt)
+  \item[b)] Beispieldatei (XML-Datenformat), welche zwei Datensätze enthält (ohne DTD)
+  \item[c)] XSLT zur Ausgabe der obigen Datensätze anzeigt und sortiert\\
+xsl:sort \dots mode-Attribut \dots
+  \end{itemize}
+\item \begin{itemize}
+  \item[a)]Zwei große Gruppen von Graikformaten, Vertretern die im Web eine Rolle spielen
+  \item[b)]2 Arten von Bezier Kurven in SVG. Wie werden diese beschrieben? Zusammensetzen zweier Kurven zu einer runden?
+  $\Rightarrow$kubische und quadratische Bezierkurven
+  \item[c)]Vollständige SVG-Datei schreiben bei der drei Bezierkurven definiert werden sollen\\
+  \item[d)]copy/paste um gleichen Kurvenzug in verschiedenen Größen darzustellen $\rightarrow$ bei uns verschieben: translate=transform
+\end{itemize}
+\item \begin{itemize}
+  \item[a)]Suchmaschinen Spamming: Begriffserklärung\\
+  3Arten mit Kurzerklärung $\rightarrow$ bei uns: anders rum, 3 genannt und Erklärung gefordert!
+  \item[b)]Google\\
+  PR erläutern $\rightarrow$ Vererbung $\rightarrow$ bei uns: Frage nach Formel!
+  \item[c)]PageRank
+  \item[d)]Was bedeutet SEO und in Bezug zu a) und b) setzen
+\end{itemize}
+\end{enumerate}

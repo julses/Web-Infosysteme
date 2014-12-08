@@ -48,3 +48,6 @@
 \addvspace {10\p@ }
 \contentsline {lstlisting}{\numberline {6.1}Metadaten am Bsp-HTML}{36}{lstlisting.6.1}
 \contentsline {lstlisting}{\numberline {6.2}Div. Inhalte von Name}{37}{lstlisting.6.2}
+\contentsline {lstlisting}{\numberline {6.3}Div. Inhalte von Name}{38}{lstlisting.6.3}
+\contentsline {lstlisting}{\numberline {6.4}Div. Inhalte von Name}{38}{lstlisting.6.4}
+\addvspace {10\p@ }
